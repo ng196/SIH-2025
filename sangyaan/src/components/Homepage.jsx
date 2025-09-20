@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from 'react';
 
-const Homepage = () => {
+const Homepage = ({ onNavigate }) => {
     const [currentTheme, setCurrentTheme] = useState('playful');
     const [showProfile, setShowProfile] = useState(false);
     const [showLearningPath, setShowLearningPath] = useState(false);
@@ -25,6 +25,10 @@ const Homepage = () => {
         setShowLearningPath(true);
     };
 
+    const goToLearn = () => {
+        onNavigate('learn');
+    };
+
     const hideLearningPath = () => {
         setShowLearningPath(false);
     };
@@ -34,7 +38,15 @@ const Homepage = () => {
     };
 
     const startNewChallenge = () => {
-        alert('Starting new challenge...');
+        onNavigate('learn');
+    };
+
+    const goToVirtualLab = () => {
+        onNavigate('virtuallab');
+    };
+
+    const goToClassroom = () => {
+        onNavigate('classroom');
     };
 
     return (
@@ -222,7 +234,7 @@ const Homepage = () => {
                                         </div>
                                     </div>
                                     <button
-                                        onClick={showLearningPathView}
+                                        onClick={goToLearn}
                                         className="w-full py-3 rounded-2xl text-lg font-bold text-white transition-all transform hover:scale-105 shadow-lg theme-primary"
                                     >
                                         Resume 🎯
@@ -252,24 +264,33 @@ const Homepage = () => {
 
                             {/* Quick Stats */}
                             <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-                                <div className="theme-card rounded-xl p-4 shadow-sm">
+                                <button
+                                    onClick={goToLearn}
+                                    className="theme-card rounded-xl p-4 shadow-sm hover:shadow-lg transition-all transform hover:scale-105"
+                                >
                                     <div className="text-center">
                                         <div className="text-2xl font-bold theme-text">12</div>
                                         <div className="text-xs opacity-70">Games</div>
                                     </div>
-                                </div>
-                                <div className="theme-card rounded-xl p-4 shadow-sm">
+                                </button>
+                                <button
+                                    onClick={goToVirtualLab}
+                                    className="theme-card rounded-xl p-4 shadow-sm hover:shadow-lg transition-all transform hover:scale-105"
+                                >
                                     <div className="text-center">
                                         <div className="text-2xl font-bold theme-text">5</div>
                                         <div className="text-xs opacity-70">Labs</div>
                                     </div>
-                                </div>
-                                <div className="theme-card rounded-xl p-4 shadow-sm">
+                                </button>
+                                <button
+                                    onClick={goToClassroom}
+                                    className="theme-card rounded-xl p-4 shadow-sm hover:shadow-lg transition-all transform hover:scale-105"
+                                >
                                     <div className="text-center">
                                         <div className="text-2xl font-bold theme-text">#15</div>
                                         <div className="text-xs opacity-70">Rank</div>
                                     </div>
-                                </div>
+                                </button>
                                 <div className="theme-card rounded-xl p-4 shadow-sm">
                                     <div className="text-center">
                                         <div className="text-2xl font-bold theme-text">87%</div>

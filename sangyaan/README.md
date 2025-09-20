@@ -40,12 +40,21 @@ npm run build
 ```
 src/
 ├── components/
-│   └── Homepage.jsx     # Main homepage component
-├── assets/              # Static assets
-├── App.jsx             # Root component
-├── db.js               # IndexedDB configuration
-├── index.css           # Global styles and theme variables
-└── main.jsx            # App entry point
+│   ├── Homepage.jsx      # Main dashboard with stats and quick actions
+│   ├── Learn.jsx         # Learning page using modular components
+│   ├── Learn_header.jsx  # Header for learning page (subject/topic info)
+│   ├── Level_view.jsx    # Learning path with curved level layout
+│   ├── Level.jsx         # Individual level nodes with interactions
+│   ├── Classroom.jsx     # Classroom page using Class component
+│   ├── Class.jsx         # Individual class cards with details
+│   ├── VirtualLab.jsx    # Virtual lab page using Lab component
+│   ├── Lab.jsx           # Individual lab cards with interactions
+│   └── Leaderboard.jsx   # Leaderboard page (placeholder)
+├── assets/               # Static assets
+├── App.jsx              # Root component with navigation
+├── db.js                # IndexedDB configuration
+├── index.css            # Global styles and theme variables
+└── main.jsx             # App entry point
 ```
 
 ## Theme System
@@ -73,15 +82,53 @@ This project uses Tailwind CSS v4 with the official Vite plugin:
 - IndexedDB for local data persistence
 - Responsive design for all device types
 
-## Development
+## Pages & Features
 
-The homepage component (`src/components/Homepage.jsx`) includes:
+### 🏠 Homepage (`Homepage.jsx`)
+- **Dashboard Overview**: XP, streaks, level, and achievements
+- **Quick Actions**: Resume learning, start new challenges
+- **Theme Switching**: Three accessible color themes
+- **Profile Management**: Stats, rewards, settings
+- **Navigation**: Quick access to all sections
 
-- Theme switching functionality
-- Profile dropdown with user stats
-- Learning path visualization
-- Progress tracking
-- Gamification elements (XP, badges, streaks)
+### 📚 Learn (Modular Components)
+- **Learn.jsx**: Main learning page container
+- **Learn_header.jsx**: Subject/topic header with progress info
+- **Level_view.jsx**: Curved learning path layout manager
+- **Level.jsx**: Individual level nodes with interactions
+- **Features**: Auto-focus on current level, gamified progression, clean design
+
+### 🧪 Virtual Lab (Modular Components)
+- **VirtualLab.jsx**: Main virtual lab page container
+- **Lab.jsx**: Individual lab cards with interactions
+- **Features**: Single featured lab, subject-specific styling, completion tracking
+
+### 🎓 Classroom (Modular Components)
+- **Classroom.jsx**: Main classroom page container
+- **Class.jsx**: Individual class cards with details
+- **Features**: Single active class, progress tracking, quick actions
+
+### 🏆 Leaderboard (`Leaderboard.jsx`)
+- **Placeholder Page**: Ready for future leaderboard implementation
+- **Stats Display**: Current rank, XP, achievements
+- **Clean Design**: Consistent with app theme
+
+### 🧭 Navigation
+- **5-Tab Navigation**: Home, Learn, Labs, Ranks, Class
+- **Mobile-First Design**: Fixed bottom navigation
+- **Seamless Routing**: Smooth transitions between sections
+
+## Modular Architecture
+
+### Component Hierarchy
+- **Page Components**: Main containers (Learn.jsx, Classroom.jsx, etc.)
+- **Feature Components**: Reusable UI elements (Level.jsx, Class.jsx, Lab.jsx)
+- **Layout Components**: Structure managers (Level_view.jsx, Learn_header.jsx)
+
+### Mock Data Structure
+- **Single Data Source**: One mock item per component type
+- **JSON Ready**: Prepared for future data integration
+- **Focused Design**: Clean, uncluttered interfaces
 
 ## Accessibility
 
