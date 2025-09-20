@@ -1,0 +1,494 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Teacher Dashboard</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f8f9fa;
+        }
+        .main-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        .view {
+            display: none;
+        }
+        .view.active {
+            display: block;
+        }
+        /* Custom scrollbar for chat */
+        .chat-feed::-webkit-scrollbar {
+            width: 6px;
+        }
+        .chat-feed::-webkit-scrollbar-track {
+            background: #f1f1f1;
+            border-radius: 10px;
+        }
+        .chat-feed::-webkit-scrollbar-thumb {
+            background: #d1d5db;
+            border-radius: 10px;
+        }
+        .chat-feed::-webkit-scrollbar-thumb:hover {
+            background: #9ca3af;
+        }
+    </style>
+</head>
+<body class="text-gray-800">
+
+    <div id="app" class="main-container p-4 sm:p-6 lg:p-8">
+
+        <!-- Header - Changes based on view -->
+        <header class="flex justify-between items-center mb-6">
+            <div id="header-content">
+                <h1 class="text-3xl font-bold text-gray-900">My Classroom</h1>
+            </div>
+            <div class="flex items-center space-x-4">
+                <div class="w-10 h-10 bg-purple-200 rounded-full flex items-center justify-center font-bold text-purple-700 text-lg">A</div>
+            </div>
+        </header>
+
+        <main>
+            <!-- ###################################################### -->
+            <!-- VIEW 1: TEACHER DASHBOARD (My Classroom) -->
+            <!-- ###################################################### -->
+            <div id="dashboard-view" class="view active">
+                <!-- Latest Notices -->
+                <div class="bg-white p-6 rounded-2xl shadow-sm mb-8">
+                    <h2 class="text-xl font-bold mb-4">Latest Notices</h2>
+                    <div id="notices-container" class="space-y-4">
+                        <!-- Notices will be injected here -->
+                    </div>
+                </div>
+
+                <!-- My Classes -->
+                <div class="bg-white p-6 rounded-2xl shadow-sm mb-8">
+                    <h2 class="text-xl font-bold mb-4">My Classes</h2>
+                    <div id="classes-container" class="space-y-4">
+                        <!-- Class items will be injected here by JavaScript -->
+                    </div>
+                </div>
+
+                <!-- Today's Schedule -->
+                <div class="bg-white p-6 rounded-2xl shadow-sm">
+                    <h2 class="text-xl font-bold mb-4">Today's Schedule</h2>
+                    <div id="schedule-container" class="space-y-3">
+                        <!-- Schedule items will be injected here by JavaScript -->
+                    </div>
+                </div>
+            </div>
+
+            <!-- ###################################################### -->
+            <!-- VIEW 2: CLASS DISCUSSION -->
+            <!-- ###################################################### -->
+            <div id="discussion-view" class="view">
+                <div class="bg-white rounded-2xl shadow-sm p-4 sm:p-6 flex flex-col h-[70vh]">
+                    <div class="flex-grow overflow-y-auto chat-feed pr-4" id="chat-feed-container">
+                        <!-- Messages will be injected here by JavaScript -->
+                    </div>
+                    <div class="mt-4 pt-4 border-t border-gray-200">
+                        <div class="relative">
+                             <input type="text" id="chat-input" placeholder="Type your message..." class="w-full pl-4 pr-12 py-3 bg-gray-100 rounded-xl focus:outline-none focus:ring-2 focus:ring-green-500 transition">
+                             <button id="send-btn" class="absolute right-2 top-1/2 -translate-y-1/2 bg-green-500 hover:bg-green-600 text-white p-2 rounded-lg">
+                                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-5 h-5"><line x1="22" y1="2" x2="11" y2="13"></line><polygon points="22 2 15 22 11 13 2 9 22 2"></polygon></svg>
+                             </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ###################################################### -->
+            <!-- VIEW 3: CLASS DETAILS -->
+            <!-- ###################################################### -->
+            <div id="results-view" class="view">
+                <div class="bg-white rounded-2xl shadow-sm p-4 sm:p-6">
+                    <div class="flex flex-col sm:flex-row justify-between sm:items-center mb-6 gap-4">
+                         <h2 id="class-details-title" class="text-xl font-bold"></h2>
+                         <div class="flex items-center gap-2 flex-wrap">
+                             <button onclick="navigateTo('notice')" class="bg-orange-500 hover:bg-orange-600 text-white font-bold py-2 px-4 rounded-lg transition-transform transform hover:scale-105 whitespace-nowrap">
+                                 Post Notice
+                             </button>
+                             <button onclick="navigateTo('discussion')" class="bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-4 rounded-lg transition-transform transform hover:scale-105 whitespace-nowrap">
+                                 Class Discussion
+                             </button>
+                             <select id="quiz-selector" class="border border-gray-300 rounded-lg p-2 focus:outline-none focus:ring-2 focus:ring-indigo-500">
+                                 <option value="wave-lab">Wave Lab Quiz</option>
+                                 <option value="kinematics">Kinematics Test</option>
+                             </select>
+                         </div>
+                    </div>
+                    
+                    <!-- NEW: Quiz Analytics Section -->
+                    <div class="mb-8">
+                        <h3 class="text-lg font-bold mb-4">Performance Distribution</h3>
+                        <div id="analytics-chart-container" class="w-full bg-gray-50 p-4 rounded-lg flex justify-around items-end h-48">
+                            <!-- Chart bars will be injected here -->
+                        </div>
+                    </div>
+
+                    <!-- Results Table -->
+                     <div class="overflow-x-auto">
+                        <table class="w-full text-left">
+                            <thead class="bg-gray-50">
+                                <tr>
+                                    <th class="p-3 font-semibold text-sm">Student Name</th>
+                                    <th class="p-3 font-semibold text-sm">Score</th>
+                                    <th class="p-3 font-semibold text-sm">Status</th>
+                                    <th class="p-3 font-semibold text-sm">Submitted On</th>
+                                </tr>
+                            </thead>
+                            <tbody id="results-table-body">
+                                <!-- Student rows will be injected here -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ###################################################### -->
+            <!-- VIEW 4: POST NOTICE -->
+            <!-- ###################################################### -->
+            <div id="notice-view" class="view">
+                 <div class="bg-white rounded-2xl shadow-sm p-4 sm:p-6">
+                     <h2 id="post-notice-title" class="text-xl font-bold mb-4"></h2>
+                     <form id="notice-form">
+                         <textarea id="notice-textarea" rows="8" class="w-full p-3 bg-gray-50 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-500" placeholder="Write your notice here... (e.g., The school will be closed on Monday for a public holiday.)"></textarea>
+                         <div class="mt-4 flex justify-end">
+                             <button type="submit" class="bg-orange-500 hover:bg-orange-600 text-white font-bold py-2 px-6 rounded-lg transition-transform transform hover:scale-105">
+                                 Post Notice
+                             </button>
+                         </div>
+                     </form>
+                 </div>
+            </div>
+
+        </main>
+    </div>
+
+    <script>
+        let currentClassId = null;
+
+        // Mock Data
+        const myClasses = [
+            { id: 1, subject: 'Physics', grade: '10', students: 28, next: 'Wave Lab' },
+            { id: 2, subject: 'Physics', grade: '9', students: 32, next: 'Mole Concept Quiz' },
+            { id: 3, subject: 'Physics', grade: '11', students: 25, next: 'Optics Assignment' },
+        ];
+        
+        const notices = [
+            { classId: 1, text: 'Reminder: The school will be closed on Monday, Sep 22nd for a public holiday.', date: 'Sep 20, 2025' },
+            { classId: 2, text: 'The parent-teacher meeting is scheduled for next Friday.', date: 'Sep 19, 2025' }
+        ];
+
+        const todaysSchedule = [
+            { time: '10:00 AM', subject: 'Physics', grade: '10', current: true },
+            { time: '11:30 AM', subject: 'Physics', grade: '9', current: false },
+            { time: '01:00 PM', subject: 'Physics', grade: '11', current: false },
+        ];
+
+        const quizResults = {
+            'wave-lab': [
+                { name: 'Alex Johnson', score: '9/10 (90%)', status: 'Completed', submitted: 'Sep 19, 2025' },
+                { name: 'Maria Garcia', score: '10/10 (100%)', status: 'Completed', submitted: 'Sep 19, 2025' },
+                { name: 'David Smith', score: '7/10 (70%)', status: 'Completed', submitted: 'Sep 19, 2025' },
+            ],
+             'kinematics': [
+                { name: 'Alex Johnson', score: '18/20 (90%)', status: 'Completed', submitted: 'Sep 15, 2025' },
+                { name: 'Maria Garcia', score: '15/20 (75%)', status: 'Completed', submitted: 'Sep 15, 2025' },
+             ]
+        };
+        
+        const quizAnalytics = {
+            'wave-lab': { '90-100%': 8, '80-89%': 12, '70-79%': 5, '<70%': 3 },
+            'kinematics': { '90-100%': 10, '80-89%': 9, '70-79%': 4, '<70%': 2 }
+        };
+
+        const discussionMessages = [
+            { sender: 'Emily White', text: 'Hi Mrs. Johnson, I have a question about the homework.', isTeacher: false, avatar: 'E' },
+            { sender: 'Mrs. Johnson', text: 'Of course, Emily. What can I help you with?', isTeacher: true, avatar: 'A' },
+        ];
+
+
+        // DOM Elements
+        const views = document.querySelectorAll('.view');
+        const headerContent = document.getElementById('header-content');
+        const chatFeedContainer = document.getElementById('chat-feed-container');
+        const chatInput = document.getElementById('chat-input');
+        const sendBtn = document.getElementById('send-btn');
+        const resultsTableBody = document.getElementById('results-table-body');
+        const quizSelector = document.getElementById('quiz-selector');
+        const scheduleContainer = document.getElementById('schedule-container');
+        const classesContainer = document.getElementById('classes-container');
+        const noticesContainer = document.getElementById('notices-container');
+        const noticeForm = document.getElementById('notice-form');
+        const noticeTextarea = document.getElementById('notice-textarea');
+        const classDetailsTitle = document.getElementById('class-details-title');
+        const postNoticeTitle = document.getElementById('post-notice-title');
+
+
+        // --- Navigation Logic ---
+        function navigateTo(viewId) {
+            views.forEach(v => v.classList.remove('active'));
+            document.getElementById(`${viewId}-view`).classList.add('active');
+            updateHeader(viewId);
+        }
+
+        function viewDiscussion(classId) {
+            currentClassId = classId;
+            navigateTo('discussion');
+        }
+
+        function manageClass(classId) {
+            currentClassId = classId;
+            const selectedClass = myClasses.find(c => c.id === classId);
+            if(selectedClass) {
+                classDetailsTitle.textContent = `${selectedClass.subject} - Grade ${selectedClass.grade} Details`;
+                postNoticeTitle.textContent = `Post Notice for ${selectedClass.subject} - Grade ${selectedClass.grade}`;
+            }
+            navigateTo('results');
+            
+            // Render initial results and analytics for the class
+            const initialQuizId = quizSelector.value;
+            renderQuizResults(initialQuizId);
+            renderQuizAnalytics(initialQuizId);
+        }
+
+        function updateHeader(viewId) {
+            let title = '';
+            let backButtonHTML = '';
+
+            const selectedClass = myClasses.find(c => c.id === currentClassId);
+            const classTitle = selectedClass ? `${selectedClass.subject} - Grade ${selectedClass.grade}` : 'Class';
+
+            switch (viewId) {
+                case 'dashboard':
+                    title = 'My Classroom';
+                    break;
+                case 'results':
+                    title = classTitle;
+                    backButtonHTML = `<button onclick="navigateTo('dashboard')" class="text-sm text-gray-500 hover:text-gray-900 flex items-center">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 mr-1" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m15 18-6-6 6-6"/></svg>
+                        Back to Dashboard</button>`;
+                    break;
+                case 'discussion':
+                    title = 'Class Discussion';
+                    backButtonHTML = `<button onclick="manageClass(currentClassId)" class="text-sm text-gray-500 hover:text-gray-900 flex items-center">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 mr-1" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m15 18-6-6 6-6"/></svg>
+                        Back to Class Details</button>`;
+                    break;
+                case 'notice':
+                    title = 'Post Notice';
+                     backButtonHTML = `<button onclick="manageClass(currentClassId)" class="text-sm text-gray-500 hover:text-gray-900 flex items-center">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 mr-1" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m15 18-6-6 6-6"/></svg>
+                        Back to Class Details</button>`;
+                    break;
+            }
+
+            headerContent.innerHTML = `
+                <div>
+                    ${backButtonHTML}
+                    <h1 class="text-3xl font-bold text-gray-900">${title}</h1>
+                </div>`;
+        }
+        
+        // --- Rendering Logic ---
+        function renderNotices() {
+            noticesContainer.innerHTML = '';
+            if (notices.length === 0) {
+                noticesContainer.innerHTML = '<p class="text-gray-500">No recent notices.</p>';
+                return;
+            }
+            const recentNotices = notices.slice(0, 3); // Show latest 3
+            recentNotices.forEach(notice => {
+                const classInfo = myClasses.find(c => c.id === notice.classId);
+                const noticeHTML = `
+                    <div class="p-4 bg-orange-50 border-l-4 border-orange-400 rounded-r-lg">
+                        <p class="font-bold text-orange-800">For ${classInfo.subject} - Grade ${classInfo.grade}</p>
+                        <p class="text-gray-700 mt-1">${notice.text}</p>
+                        <p class="text-xs text-gray-500 text-right mt-2">${notice.date}</p>
+                    </div>
+                `;
+                noticesContainer.innerHTML += noticeHTML;
+            });
+        }
+
+        function renderClasses() {
+            classesContainer.innerHTML = '';
+            myClasses.forEach(c => {
+                const manageButtonHTML = `<button onclick="manageClass(${c.id})" class="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded-lg transition-transform transform hover:scale-105">
+                                             Manage Class
+                                         </button>`;
+
+                const classHTML = `
+                    <div class="flex flex-col sm:flex-row justify-between sm:items-center p-4 bg-gray-50 rounded-lg">
+                        <div class="flex items-center space-x-4 mb-4 sm:mb-0">
+                            <div class="bg-purple-100 p-3 rounded-lg"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-purple-500"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10"/><path d="m9 12 2 2 4-4"/></svg></div>
+                            <div>
+                                <p class="font-bold text-lg">${c.subject} - Grade ${c.grade}</p>
+                                <p class="text-sm text-gray-500">Mrs. Johnson • ${c.students} students</p>
+                            </div>
+                        </div>
+                        <div class="flex items-center gap-2">
+                             <button onclick="viewDiscussion(${c.id})" class="bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-4 rounded-lg transition-transform transform hover:scale-105">
+                                 Discussion
+                             </button>
+                             ${manageButtonHTML}
+                        </div>
+                    </div>
+                `;
+                classesContainer.innerHTML += classHTML;
+            });
+        }
+
+        function renderSchedule() {
+            scheduleContainer.innerHTML = '';
+            todaysSchedule.forEach(item => {
+                const itemBg = item.current ? 'bg-blue-50' : 'bg-gray-50';
+                const border = item.current ? 'border-l-4 border-blue-500' : 'border-l-4 border-transparent';
+                const scheduleHTML = `
+                    <div class="flex items-center justify-between p-3 rounded-lg ${itemBg} ${border}">
+                        <div class="flex items-center gap-4">
+                            <div class="font-semibold text-gray-600">${item.time}</div>
+                            <div>
+                                <p class="font-bold">${item.subject} - Grade ${item.grade}</p>
+                            </div>
+                        </div>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-5 h-5 text-gray-400"><path d="m9 18 6-6-6-6"/></svg>
+                    </div>
+                `;
+                scheduleContainer.innerHTML += scheduleHTML;
+            });
+        }
+        
+        function renderQuizResults(quizId) {
+            const results = quizResults[quizId] || [];
+            resultsTableBody.innerHTML = ''; // Clear existing rows
+            results.forEach(student => {
+                const statusClass = student.status === 'Completed' ? 'bg-green-100 text-green-800' : 'bg-yellow-100 text-yellow-800';
+                const row = `
+                    <tr class="border-b border-gray-200 hover:bg-gray-50">
+                        <td class="p-3 font-medium">${student.name}</td>
+                        <td class="p-3">${student.score}</td>
+                        <td class="p-3"><span class="px-2 py-1 text-xs font-semibold rounded-full ${statusClass}">${student.status}</span></td>
+                        <td class="p-3 text-gray-500">${student.submitted}</td>
+                    </tr>
+                `;
+                resultsTableBody.innerHTML += row;
+            });
+        }
+
+        function renderQuizAnalytics(quizId) {
+            const analyticsContainer = document.getElementById('analytics-chart-container');
+            const data = quizAnalytics[quizId] || {};
+            analyticsContainer.innerHTML = '';
+
+            const gradeBrackets = ['90-100%', '80-89%', '70-79%', '<70%'];
+            const values = gradeBrackets.map(bracket => data[bracket] || 0);
+            const maxValue = Math.max(...values);
+            
+            if (maxValue === 0) {
+                analyticsContainer.innerHTML = '<p class="text-gray-500 text-center w-full">No analytics data available for this quiz.</p>';
+                return;
+            }
+
+            gradeBrackets.forEach(bracket => {
+                const value = data[bracket] || 0;
+                const barHeight = (value / maxValue) * 95; // Use 95% to avoid touching top edge
+
+                const barHTML = `
+                    <div class="flex flex-col items-center justify-end h-full text-center w-1/4">
+                        <div class="text-sm font-bold text-gray-700">${value}</div>
+                        <div class="w-10 md:w-14 bg-blue-400 hover:bg-blue-500 rounded-t-md transition-all ease-in-out duration-300" style="height: ${barHeight}%" title="${value} students"></div>
+                        <div class="text-xs text-gray-500 mt-1">${bracket}</div>
+                    </div>
+                `;
+                analyticsContainer.innerHTML += barHTML;
+            });
+        }
+        
+        function renderDiscussion() {
+            chatFeedContainer.innerHTML = '';
+            discussionMessages.forEach(msg => {
+                appendMessage(msg);
+            });
+            chatFeedContainer.scrollTop = chatFeedContainer.scrollHeight;
+        }
+
+        function appendMessage({ sender, text, isTeacher, avatar }) {
+            const messageAlignment = isTeacher ? 'justify-end' : 'justify-start';
+            const bubbleColor = isTeacher ? 'bg-green-500 text-white' : 'bg-gray-200 text-gray-800';
+            const avatarColor = isTeacher ? 'bg-purple-200 text-purple-700' : 'bg-blue-200 text-blue-700';
+            
+            const messageHTML = `
+                <div class="flex items-start gap-3 my-4 ${messageAlignment}">
+                    ${!isTeacher ? `<div class="w-8 h-8 ${avatarColor} rounded-full flex items-center justify-center font-bold text-sm flex-shrink-0">${avatar}</div>` : ''}
+                    <div>
+                         <p class="text-sm font-semibold mb-1 ${isTeacher ? 'text-right' : ''}">${sender}</p>
+                         <div class="p-3 rounded-xl ${bubbleColor} max-w-xs md:max-w-md">
+                            <p>${text}</p>
+                        </div>
+                    </div>
+                    ${isTeacher ? `<div class="w-8 h-8 ${avatarColor} rounded-full flex items-center justify-center font-bold text-sm flex-shrink-0">${avatar}</div>` : ''}
+                </div>
+            `;
+            chatFeedContainer.innerHTML += messageHTML;
+        }
+
+        function handleSendMessage() {
+            const messageText = chatInput.value.trim();
+            if (messageText) {
+                const newMessage = { sender: 'Mrs. Johnson', text: messageText, isTeacher: true, avatar: 'A' };
+                discussionMessages.push(newMessage);
+                appendMessage(newMessage);
+                chatInput.value = '';
+                chatFeedContainer.scrollTop = chatFeedContainer.scrollHeight;
+            }
+        }
+
+        function handlePostNotice(e) {
+            e.preventDefault();
+            const noticeText = noticeTextarea.value.trim();
+            if (noticeText && currentClassId) {
+                const newNotice = {
+                    classId: currentClassId,
+                    text: noticeText,
+                    date: new Date().toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' })
+                };
+                notices.unshift(newNotice); // Add to the beginning
+                renderNotices();
+                noticeTextarea.value = '';
+                manageClass(currentClassId); // Go back to class details
+            }
+        }
+
+        // --- Event Listeners ---
+        quizSelector.addEventListener('change', (e) => {
+            renderQuizResults(e.target.value);
+            renderQuizAnalytics(e.target.value);
+        });
+        sendBtn.addEventListener('click', handleSendMessage);
+        chatInput.addEventListener('keypress', (e) => {
+            if (e.key === 'Enter') handleSendMessage();
+        });
+        noticeForm.addEventListener('submit', handlePostNotice);
+
+
+        // --- Initial Load ---
+        document.addEventListener('DOMContentLoaded', () => {
+            renderClasses();
+            renderSchedule();
+            renderDiscussion();
+            renderNotices();
+            updateHeader('dashboard');
+        });
+
+    </script>
+</body>
+</html>
+
