@@ -1,29 +1,26 @@
+ HEAD
 // hyceyhdvjecvecve
 
 import { useState, useEffect } from 'react';
+/**
+ * Homepage Component
+ * 
+ * Purpose: Main dashboard page with user stats, quick actions, and navigation
+ * Parent Component: App.jsx
+ * 
+ * Features:
+ * - Welcome message and user stats
+ * - Quick action cards for navigation
+ * - Profile component integration
+ * - Clean, gamified design
+ */
+
+import { useState } from 'react';
+import Profile from './Profile';
+ upstream/main
 
 const Homepage = ({ onNavigate }) => {
-    const [currentTheme, setCurrentTheme] = useState('playful');
-    const [showProfile, setShowProfile] = useState(false);
     const [showLearningPath, setShowLearningPath] = useState(false);
-
-    useEffect(() => {
-        // Set initial theme
-        document.documentElement.setAttribute('data-theme', currentTheme);
-    }, [currentTheme]);
-
-    const setTheme = (theme) => {
-        setCurrentTheme(theme);
-        document.documentElement.setAttribute('data-theme', theme);
-    };
-
-    const toggleProfile = () => {
-        setShowProfile(!showProfile);
-    };
-
-    const showLearningPathView = () => {
-        setShowLearningPath(true);
-    };
 
     const goToLearn = () => {
         onNavigate('learn');
@@ -61,7 +58,7 @@ const Homepage = ({ onNavigate }) => {
 
             {/* Main Container */}
             <div className="relative z-10 min-h-screen flex flex-col">
-                {/* Header with Profile and Theme Selector */}
+                {/* Header with Logo and Profile */}
                 <header className="p-6">
                     <div className="max-w-4xl mx-auto flex items-center justify-between">
                         {/* Logo */}
@@ -75,119 +72,14 @@ const Homepage = ({ onNavigate }) => {
                             </div>
                         </div>
 
-                        {/* Theme Selector */}
-                        <div className="flex items-center space-x-4">
-                            <div className="flex items-center space-x-2 theme-card rounded-2xl p-2 shadow-lg">
-                                <span className="text-sm font-medium px-2">Theme:</span>
-                                <button
-                                    onClick={() => setTheme('playful')}
-                                    className={`w-8 h-8 rounded-full border-2 transition-all hover:scale-110 ${currentTheme === 'playful' ? 'border-4' : 'border-gray-300'}`}
-                                    style={{ background: 'linear-gradient(45deg, #22C55E, #FF8A00)' }}
-                                    title="Playful Growth"
-                                />
-                                <button
-                                    onClick={() => setTheme('calm')}
-                                    className={`w-8 h-8 rounded-full border-2 transition-all hover:scale-110 ${currentTheme === 'calm' ? 'border-4' : 'border-gray-300'}`}
-                                    style={{ background: 'linear-gradient(45deg, #2563EB, #06B6D4)' }}
-                                    title="Calm Focus"
-                                />
-                                <button
-                                    onClick={() => setTheme('contrast')}
-                                    className={`w-8 h-8 rounded-full border-2 transition-all hover:scale-110 ${currentTheme === 'contrast' ? 'border-4' : 'border-gray-300'}`}
-                                    style={{ background: 'linear-gradient(45deg, #004E89, #FFB703)' }}
-                                    title="High Contrast"
-                                />
-                            </div>
-
-                            {/* Profile Icon */}
-                            <div className="relative">
-                                <button
-                                    onClick={toggleProfile}
-                                    className="w-12 h-12 rounded-full flex items-center justify-center shadow-lg hover:scale-110 transition-all theme-accent relative"
-                                >
-                                    <span className="text-white font-bold text-lg">A</span>
-                                    {/* Notification dot for rewards */}
-                                    <div className="absolute -top-1 -right-1 w-4 h-4 bg-red-500 rounded-full flex items-center justify-center">
-                                        <span className="text-xs text-white">!</span>
-                                    </div>
-                                </button>
-
-                                {/* Profile Dropdown */}
-                                {showProfile && (
-                                    <div className="absolute right-0 top-16 w-80 theme-card rounded-3xl shadow-2xl p-6 z-50">
-                                        {/* Profile Header */}
-                                        <div className="text-center mb-6">
-                                            <div className="w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-3 theme-accent">
-                                                <span className="text-white font-bold text-2xl">A</span>
-                                            </div>
-                                            <h3 className="text-xl font-bold theme-text">Alex Johnson</h3>
-                                            <p className="text-sm opacity-70">Level 12 Explorer</p>
-                                        </div>
-
-                                        {/* Stats Grid */}
-                                        <div className="grid grid-cols-2 gap-4 mb-6">
-                                            <div className="text-center">
-                                                <div className="text-2xl font-bold theme-text">2,450</div>
-                                                <div className="text-xs opacity-70 flex items-center justify-center">
-                                                    <span className="text-purple-500 mr-1">⭐</span>
-                                                    <span>Total XP</span>
-                                                </div>
-                                            </div>
-                                            <div className="text-center">
-                                                <div className="text-2xl font-bold theme-text">7</div>
-                                                <div className="text-xs opacity-70 flex items-center justify-center">
-                                                    <span className="text-orange-500 mr-1">🔥</span>
-                                                    <span>Day Streak</span>
-                                                </div>
-                                            </div>
-                                            <div className="text-center">
-                                                <div className="text-2xl font-bold theme-text">15</div>
-                                                <div className="text-xs opacity-70 flex items-center justify-center">
-                                                    <span className="text-yellow-500 mr-1">🏅</span>
-                                                    <span>Badges</span>
-                                                </div>
-                                            </div>
-                                            <div className="text-center">
-                                                <div className="text-2xl font-bold theme-text">350</div>
-                                                <div className="text-xs opacity-70 flex items-center justify-center">
-                                                    <span className="text-blue-500 mr-1">💎</span>
-                                                    <span>Gems</span>
-                                                </div>
-                                            </div>
-                                        </div>
-
-                                        {/* Recent Rewards */}
-                                        <div className="mb-6">
-                                            <h4 className="font-semibold theme-text mb-3 flex items-center">
-                                                <span className="mr-2">🎁</span>
-                                                <span>Recent Rewards</span>
-                                                <div className="ml-auto w-2 h-2 bg-red-500 rounded-full animate-pulse"></div>
-                                            </h4>
-                                            <div className="space-y-2">
-                                                <div className="flex items-center justify-between p-2 bg-yellow-50 rounded-xl">
-                                                    <div className="flex items-center space-x-2">
-                                                        <span className="text-lg">🏆</span>
-                                                        <span className="text-sm font-medium">Wave Master Badge</span>
-                                                    </div>
-                                                    <button className="text-xs bg-yellow-400 text-yellow-900 px-2 py-1 rounded-full font-semibold hover:scale-105 transition-transform">
-                                                        Claim
-                                                    </button>
-                                                </div>
-                                                <div className="flex items-center justify-between p-2 bg-purple-50 rounded-xl">
-                                                    <div className="flex items-center space-x-2">
-                                                        <span className="text-lg">⭐</span>
-                                                        <span className="text-sm font-medium">+50 XP Bonus</span>
-                                                    </div>
-                                                    <button className="text-xs bg-purple-400 text-purple-900 px-2 py-1 rounded-full font-semibold hover:scale-105 transition-transform">
-                                                        Claim
-                                                    </button>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                )}
-                            </div>
-                        </div>
+                        {/* Profile Component */}
+                        <Profile
+                            userName="Alex Johnson"
+                            userLevel="Level 12 Explorer"
+                            userXP={2450}
+                            userStreak={7}
+                            showNotification={true}
+                        />
                     </div>
                 </header>
 
@@ -300,138 +192,22 @@ const Homepage = ({ onNavigate }) => {
                             </div>
                         </div>
                     ) : (
-                        /* Learning Path View */
-                        <div className="max-w-3xl mx-auto">
-                            <div className="mb-8 text-center">
-                                <button
-                                    onClick={hideLearningPath}
-                                    className="text-sm opacity-70 hover:opacity-100 transition mb-4"
-                                >
-                                    ← Back to Dashboard
-                                </button>
-                                <h3 className="text-2xl font-bold theme-text mb-2">Physics Fun - Learning Path</h3>
-                                <p className="opacity-70">Complete levels to unlock new challenges!</p>
-                            </div>
-
-                            {/* Path Container */}
-                            <div className="relative max-w-3xl mx-auto">
-                                {/* Curved Path SVG */}
-                                <svg className="absolute inset-0 w-full h-full" viewBox="0 0 600 800" fill="none">
-                                    <path d="M100 50 Q200 150 300 100 T500 200 Q400 300 300 250 T100 400 Q200 500 300 450 T500 600 Q400 700 300 650"
-                                        stroke="var(--primary)" strokeWidth="4" strokeDasharray="10,5" opacity="0.3" />
-                                </svg>
-
-                                {/* Level Nodes */}
-                                <div className="relative space-y-16 py-8">
-                                    {/* Level 1: Completed */}
-                                    <div className="flex items-center justify-start">
-                                        <div className="flex items-center space-x-4">
-                                            <div className="w-16 h-16 rounded-full flex items-center justify-center shadow-lg theme-success relative">
-                                                <span className="text-2xl">🌊</span>
-                                                <div className="absolute -top-1 -right-1 w-6 h-6 bg-yellow-400 rounded-full flex items-center justify-center">
-                                                    <span className="text-xs">⭐</span>
-                                                </div>
-                                            </div>
-                                            <div className="theme-card rounded-2xl p-4 shadow-lg">
-                                                <h4 className="font-bold theme-text">Wave Basics</h4>
-                                                <p className="text-sm opacity-70">Understanding wave properties</p>
-                                                <div className="flex items-center mt-2 space-x-2">
-                                                    <span className="text-yellow-400 text-sm">⭐⭐⭐</span>
-                                                    <span className="text-xs opacity-70">Perfect!</span>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    {/* Level 2: Completed */}
-                                    <div className="flex items-center justify-end">
-                                        <div className="flex items-center space-x-4">
-                                            <div className="theme-card rounded-2xl p-4 shadow-lg">
-                                                <h4 className="font-bold theme-text">Wave Motion</h4>
-                                                <p className="text-sm opacity-70">How waves travel</p>
-                                                <div className="flex items-center mt-2 space-x-2">
-                                                    <span className="text-yellow-400 text-sm">⭐⭐</span>
-                                                    <span className="text-xs opacity-70">Great job!</span>
-                                                </div>
-                                            </div>
-                                            <div className="w-16 h-16 rounded-full flex items-center justify-center shadow-lg theme-success relative">
-                                                <span className="text-2xl">🏄</span>
-                                                <div className="absolute -top-1 -right-1 w-6 h-6 bg-yellow-400 rounded-full flex items-center justify-center">
-                                                    <span className="text-xs">⭐</span>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    {/* Level 3: Current (In Progress) */}
-                                    <div className="flex items-center justify-start">
-                                        <div className="flex items-center space-x-4">
-                                            <div className="w-16 h-16 rounded-full flex items-center justify-center shadow-lg theme-primary animate-pulse-slow relative">
-                                                <span className="text-2xl">⚡</span>
-                                                <div className="absolute -top-2 -right-2 w-8 h-8 bg-orange-400 rounded-full flex items-center justify-center animate-bounce">
-                                                    <span className="text-xs text-white font-bold">75%</span>
-                                                </div>
-                                            </div>
-                                            <div className="theme-card rounded-2xl p-4 shadow-lg border-2 theme-border-primary">
-                                                <h4 className="font-bold theme-text">Wave Interference</h4>
-                                                <p className="text-sm opacity-70">When waves meet</p>
-                                                <div className="flex items-center mt-2">
-                                                    <div className="w-20 h-2 bg-gray-200 rounded-full overflow-hidden">
-                                                        <div className="h-full rounded-full theme-primary" style={{ width: '75%' }}></div>
-                                                    </div>
-                                                    <span className="ml-2 text-xs font-semibold">75%</span>
-                                                </div>
-                                                <button
-                                                    onClick={continueLevel}
-                                                    className="mt-3 px-4 py-2 rounded-xl text-sm font-bold text-white theme-primary hover:scale-105 transition-transform"
-                                                >
-                                                    Continue →
-                                                </button>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    {/* Level 4: Locked */}
-                                    <div className="flex items-center justify-end">
-                                        <div className="flex items-center space-x-4 opacity-50">
-                                            <div className="theme-card rounded-2xl p-4 shadow-lg">
-                                                <h4 className="font-bold theme-text">Standing Waves</h4>
-                                                <p className="text-sm opacity-70">Waves that don't travel</p>
-                                                <div className="flex items-center mt-2 space-x-2">
-                                                    <span className="text-gray-400 text-sm">🔒</span>
-                                                    <span className="text-xs opacity-70">Complete previous level</span>
-                                                </div>
-                                            </div>
-                                            <div className="w-16 h-16 bg-gray-300 rounded-full flex items-center justify-center shadow-lg relative">
-                                                <span className="text-2xl opacity-50">🎵</span>
-                                                <div className="absolute inset-0 flex items-center justify-center">
-                                                    <span className="text-2xl">🔒</span>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    {/* Level 5: Locked */}
-                                    <div className="flex items-center justify-start">
-                                        <div className="flex items-center space-x-4 opacity-50">
-                                            <div className="w-16 h-16 bg-gray-300 rounded-full flex items-center justify-center shadow-lg relative">
-                                                <span className="text-2xl opacity-50">🎼</span>
-                                                <div className="absolute inset-0 flex items-center justify-center">
-                                                    <span className="text-2xl">🔒</span>
-                                                </div>
-                                            </div>
-                                            <div className="theme-card rounded-2xl p-4 shadow-lg">
-                                                <h4 className="font-bold theme-text">Wave Applications</h4>
-                                                <p className="text-sm opacity-70">Real-world wave uses</p>
-                                                <div className="flex items-center mt-2 space-x-2">
-                                                    <span className="text-gray-400 text-sm">🔒</span>
-                                                    <span className="text-xs opacity-70">Coming soon!</span>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+                        /* Learning Path View - Simplified */
+                        <div className="max-w-3xl mx-auto text-center">
+                            <button
+                                onClick={hideLearningPath}
+                                className="text-sm opacity-70 hover:opacity-100 transition mb-4"
+                            >
+                                ← Back to Dashboard
+                            </button>
+                            <h3 className="text-2xl font-bold theme-text mb-2">Physics Fun - Learning Path</h3>
+                            <p className="opacity-70">Complete levels to unlock new challenges!</p>
+                            <button
+                                onClick={goToLearn}
+                                className="mt-6 px-6 py-3 rounded-xl text-lg font-bold text-white theme-primary hover:scale-105 transition-transform"
+                            >
+                                Go to Learning Path →
+                            </button>
                         </div>
                     )}
                 </main>

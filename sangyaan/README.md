@@ -41,6 +41,7 @@ npm run build
 src/
 ├── components/
 │   ├── Homepage.jsx      # Main dashboard with stats and quick actions
+│   ├── Profile.jsx       # Reusable profile dropdown with theme/language settings
 │   ├── Learn.jsx         # Learning page using modular components
 │   ├── Learn_header.jsx  # Header for learning page (subject/topic info)
 │   ├── Level_view.jsx    # Learning path with curved level layout
@@ -122,8 +123,16 @@ This project uses Tailwind CSS v4 with the official Vite plugin:
 
 ### Component Hierarchy
 - **Page Components**: Main containers (Learn.jsx, Classroom.jsx, etc.)
+- **Shared Components**: Reusable across pages (Profile.jsx)
 - **Feature Components**: Reusable UI elements (Level.jsx, Class.jsx, Lab.jsx)
 - **Layout Components**: Structure managers (Level_view.jsx, Learn_header.jsx)
+
+### Profile Component Features
+- **Theme Selection**: Three accessible themes (Playful Growth, Calm Focus, High Contrast)
+- **Language Options**: English, Hindi (हिंदी), Odia (ଓଡ଼ିଆ)
+- **User Stats**: XP points and streak tracking
+- **Settings Access**: Quick access to app settings
+- **Consistent Design**: Used across all main pages
 
 ### Mock Data Structure
 - **Single Data Source**: One mock item per component type

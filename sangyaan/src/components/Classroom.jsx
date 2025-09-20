@@ -12,6 +12,7 @@
  */
 
 import Class from './Class';
+import Profile from './Profile';
 
 const Classroom = ({ onNavigate }) => {
     // Mock data - single class for now
@@ -49,9 +50,13 @@ const Classroom = ({ onNavigate }) => {
                             </button>
                             <h1 className="text-2xl font-bold theme-text">My Classroom</h1>
                         </div>
-                        <div className="w-10 h-10 rounded-full flex items-center justify-center theme-accent">
-                            <span className="text-white font-semibold">A</span>
-                        </div>
+                        <Profile
+                            userName="Alex Johnson"
+                            userLevel="Level 12 Explorer"
+                            userXP={2450}
+                            userStreak={7}
+                            showNotification={false}
+                        />
                     </div>
                 </div>
             </header>

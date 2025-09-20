@@ -13,6 +13,7 @@
 
 import Learn_header from './Learn_header';
 import Level_view from './Level_view';
+import Profile from './Profile';
 
 const Learn = ({ onNavigate }) => {
     // Mock data - will be replaced with JSON data later
@@ -46,10 +47,13 @@ const Learn = ({ onNavigate }) => {
                         >
                             ← Back to Dashboard
                         </button>
-                        <div className="flex items-center space-x-2 theme-card px-4 py-2 rounded-full shadow-sm">
-                            <span className="text-purple-500">⭐</span>
-                            <span className="font-semibold">2,450 XP</span>
-                        </div>
+                        <Profile
+                            userName="Alex Johnson"
+                            userLevel="Level 12 Explorer"
+                            userXP={2450}
+                            userStreak={7}
+                            showNotification={false}
+                        />
                     </div>
                 </div>
             </header>

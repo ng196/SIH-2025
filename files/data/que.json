@@ -5,39 +5,63 @@
       "qid": "phy_8_gravity_01_q1",
       "type": "mcq",
       "ques": "What happens if mass doubles?",
-      "mcq": ["Force doubles", "Force halves", "Force remains same"],
-      "answer": { "mcq": 0 },    
+      "mcq": [
+        "Force doubles",
+        "Force halves",
+        "Force remains same"
+      ],
+      "answer": {
+        "mcq": 0
+      },
       "difficulty": "easy",
       "special": false,
-      "prev_node": "theory", 
+      "prev_node": "theory",
       "next_node": "phy_8_gravity_01_q2",
       "status": "unattempted",
-      "stats": { "time_taken": null, "attempts": 0 }
+      "stats": {
+        "time_taken": null,
+        "attempts": 0
+      }
     },
     {
       "qid": "phy_8_gravity_01_q2",
       "type": "numerical",
       "ques": "Calculate force between 2kg and 3kg...",
-      "answer": { "value": "4.0e-11" },
+      "answer": {
+        "value": "4.0e-11"
+      },
       "difficulty": "medium",
       "special": false,
       "prev_node": "phy_8_gravity_01_q1",
       "next_node": "boss_q1",
       "status": "unattempted",
-      "stats": { "time_taken": null, "attempts": 0 }
+      "stats": {
+        "time_taken": null,
+        "attempts": 0
+      }
     },
     {
       "qid": "boss_q1",
       "type": "mcq",
       "ques": "Which factor affects gravitational force the most?",
-      "mcq": ["Distance", "Mass", "Shape", "Volume"],
-      "answer": { "mcq": 0 },
+      "mcq": [
+        "Distance",
+        "Mass",
+        "Shape",
+        "Volume"
+      ],
+      "answer": {
+        "mcq": 0
+      },
       "difficulty": "boss",
       "special": true,
       "prev_node": "phy_8_gravity_01_q2",
       "next_node": null,
       "status": "unattempted",
-      "stats": { "time_taken": null, "attempts": 0 }
+      "stats": {
+        "time_taken": null,
+        "attempts": 0
+      }
     }
   ]
 }
