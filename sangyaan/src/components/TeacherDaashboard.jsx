@@ -157,7 +157,7 @@ const TeacherDashboard = () => {
                         <div className="flex items-center space-x-4">
                             <div className="flex items-center space-x-2">
                                 <span className="text-gray-700">John Smith</span>
-                                <div className="w-8 h-8 bg-blue-500 rounded-full flex items-center justify-center text-white">
+                                <div className="w-8 h-8 rounded-full flex items-center justify-center text-white" style={{backgroundColor: '#0055A4'}}>
                                     👨‍🏫
                                 </div>
                             </div>
@@ -172,109 +172,109 @@ const TeacherDashboard = () => {
                         <div className="space-y-6">
                             {/* Stats Cards */}
                             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-                                <div className="bg-white rounded-xl shadow-sm p-6 border border-gray-200">
+                                <div className="bg-white shadow-sm p-6 border border-gray-200" style={{borderRadius: '8px'}}>
                                     <div className="flex items-center">
-                                        <div className="w-12 h-12 bg-blue-500 rounded-lg flex items-center justify-center text-white text-xl">
+                                        <div className="w-12 h-12 flex items-center justify-center text-white text-xl" style={{backgroundColor: '#0055A4', borderRadius: '8px'}}>
                                             👥
                                         </div>
                                         <div className="ml-4">
-                                            <h3 className="text-2xl font-bold text-gray-900">{statsData.totalStudents}</h3>
-                                            <p className="text-gray-600 text-sm">{t('teacher.totalStudents')}</p>
-                                            <p className="text-green-600 text-xs mt-1">+2 this week</p>
+                                            <h3 className="text-2xl font-bold" style={{color: '#333333'}}>{statsData.totalStudents}</h3>
+                                            <p className="text-sm" style={{color: '#757575'}}>{t('teacher.totalStudents')}</p>
+                                            <p className="text-xs mt-1" style={{color: '#4CAF50'}}>+2 this week</p>
                                         </div>
                                     </div>
                                 </div>
                                 
-                                <div className="bg-white rounded-xl shadow-sm p-6 border border-gray-200">
+                                <div className="bg-white shadow-sm p-6 border border-gray-200" style={{borderRadius: '8px'}}>
                                     <div className="flex items-center">
-                                        <div className="w-12 h-12 bg-green-500 rounded-lg flex items-center justify-center text-white text-xl">
+                                        <div className="w-12 h-12 flex items-center justify-center text-white text-xl" style={{backgroundColor: '#4CAF50', borderRadius: '8px'}}>
                                             📈
                                         </div>
                                         <div className="ml-4">
-                                            <h3 className="text-2xl font-bold text-gray-900">{statsData.averageProgress}%</h3>
-                                            <p className="text-gray-600 text-sm">{t('teacher.avgProgress')}</p>
-                                            <p className="text-green-600 text-xs mt-1">+5% from last week</p>
+                                            <h3 className="text-2xl font-bold" style={{color: '#333333'}}>{statsData.averageProgress}%</h3>
+                                            <p className="text-sm" style={{color: '#757575'}}>{t('teacher.avgProgress')}</p>
+                                            <p className="text-xs mt-1" style={{color: '#4CAF50'}}>+5% from last week</p>
                                         </div>
                                     </div>
                                 </div>
                                 
-                                <div className="bg-white rounded-xl shadow-sm p-6 border border-gray-200">
+                                <div className="bg-white shadow-sm p-6 border border-gray-200" style={{borderRadius: '8px'}}>
                                     <div className="flex items-center">
-                                        <div className="w-12 h-12 bg-orange-500 rounded-lg flex items-center justify-center text-white text-xl">
+                                        <div className="w-12 h-12 flex items-center justify-center text-white text-xl" style={{backgroundColor: '#FF9800', borderRadius: '8px'}}>
                                             ⏱️
                                         </div>
                                         <div className="ml-4">
-                                            <h3 className="text-2xl font-bold text-gray-900">{statsData.averageStudyTime}h</h3>
-                                            <p className="text-gray-600 text-sm">{t('teacher.avgWeeklyStudy')}</p>
-                                            <p className="text-green-600 text-xs mt-1">+0.5h from last week</p>
+                                            <h3 className="text-2xl font-bold" style={{color: '#333333'}}>{statsData.averageStudyTime}h</h3>
+                                            <p className="text-sm" style={{color: '#757575'}}>{t('teacher.avgWeeklyStudy')}</p>
+                                            <p className="text-xs mt-1" style={{color: '#4CAF50'}}>+0.5h from last week</p>
                                         </div>
                                     </div>
                                 </div>
                                 
-                                <div className="bg-white rounded-xl shadow-sm p-6 border border-gray-200">
+                                <div className="bg-white shadow-sm p-6 border border-gray-200" style={{borderRadius: '8px'}}>
                                     <div className="flex items-center">
-                                        <div className="w-12 h-12 bg-red-500 rounded-lg flex items-center justify-center text-white text-xl">
+                                        <div className="w-12 h-12 flex items-center justify-center text-white text-xl" style={{backgroundColor: '#F44336', borderRadius: '8px'}}>
                                             ⚠️
                                         </div>
                                         <div className="ml-4">
-                                            <h3 className="text-2xl font-bold text-gray-900">{statsData.needAttention}</h3>
-                                            <p className="text-gray-600 text-sm">{t('teacher.needAttention')}</p>
-                                            <p className="text-green-600 text-xs mt-1">-2 from last week</p>
+                                            <h3 className="text-2xl font-bold" style={{color: '#333333'}}>{statsData.needAttention}</h3>
+                                            <p className="text-sm" style={{color: '#757575'}}>{t('teacher.needAttention')}</p>
+                                            <p className="text-xs mt-1" style={{color: '#4CAF50'}}>-2 from last week</p>
                                         </div>
                                     </div>
                                 </div>
                             </div>
 
                             {/* Chart Section */}
-                            <div className="bg-white rounded-xl shadow-sm p-6 border border-gray-200">
+                            <div className="bg-white shadow-sm p-6 border border-gray-200" style={{borderRadius: '8px'}}>
                                 <div className="flex justify-between items-center mb-6">
-                                    <h2 className="text-xl font-bold text-gray-900">{t('teacher.classPerformance')}</h2>
-                                    <select className="px-3 py-2 border border-gray-300 rounded-lg text-sm">
+                                    <h2 className="text-xl font-bold" style={{color: '#333333'}}>{t('teacher.classPerformance')}</h2>
+                                    <select className="px-3 py-2 border border-gray-300 text-sm" style={{borderRadius: '8px'}}>
                                         <option>Last 7 days</option>
                                         <option>Last 30 days</option>
                                         <option>Last 90 days</option>
                                     </select>
                                 </div>
                                 <div className="grid grid-cols-1 md:grid-cols-4 gap-4 mb-6">
-                                    <div className="text-center p-4 bg-blue-50 rounded-lg">
-                                        <div className="text-2xl font-bold text-blue-600">{classAnalytics.averageScore}%</div>
-                                        <div className="text-sm text-gray-600">{t('teacher.classAverage')}</div>
+                                    <div className="text-center p-4" style={{backgroundColor: '#E3F2FD', borderRadius: '8px'}}>
+                                        <div className="text-2xl font-bold" style={{color: '#0055A4'}}>{classAnalytics.averageScore}%</div>
+                                        <div className="text-sm" style={{color: '#757575'}}>{t('teacher.classAverage')}</div>
                                     </div>
-                                    <div className="text-center p-4 bg-green-50 rounded-lg">
-                                        <div className="text-2xl font-bold text-green-600">{classAnalytics.topScore}%</div>
-                                        <div className="text-sm text-gray-600">{t('teacher.highestScore')}</div>
+                                    <div className="text-center p-4" style={{backgroundColor: '#E8F5E9', borderRadius: '8px'}}>
+                                        <div className="text-2xl font-bold" style={{color: '#4CAF50'}}>{classAnalytics.topScore}%</div>
+                                        <div className="text-sm" style={{color: '#757575'}}>{t('teacher.highestScore')}</div>
                                     </div>
-                                    <div className="text-center p-4 bg-purple-50 rounded-lg">
-                                        <div className="text-2xl font-bold text-purple-600">{classAnalytics.activeToday}</div>
-                                        <div className="text-sm text-gray-600">{t('teacher.activeToday')}</div>
+                                    <div className="text-center p-4" style={{backgroundColor: '#EDE7F6', borderRadius: '8px'}}>
+                                        <div className="text-2xl font-bold" style={{color: '#673AB7'}}>{classAnalytics.activeToday}</div>
+                                        <div className="text-sm" style={{color: '#757575'}}>{t('teacher.activeToday')}</div>
                                     </div>
-                                    <div className="text-center p-4 bg-orange-50 rounded-lg">
-                                        <div className="text-2xl font-bold text-orange-600">{classAnalytics.weeklyGrowth}</div>
-                                        <div className="text-sm text-gray-600">{t('teacher.highPerformers')}</div>
+                                    <div className="text-center p-4" style={{backgroundColor: '#FFF3E0', borderRadius: '8px'}}>
+                                        <div className="text-2xl font-bold" style={{color: '#FF9800'}}>{classAnalytics.weeklyGrowth}</div>
+                                        <div className="text-sm" style={{color: '#757575'}}>{t('teacher.highPerformers')}</div>
                                     </div>
                                 </div>
-                                <div className="h-32 bg-gray-100 rounded-lg flex items-center justify-center">
+                                <div className="h-32 bg-gray-100 flex items-center justify-center" style={{borderRadius: '8px'}}>
                                     <p className="text-gray-500">📊 Performance trends visualization</p>
                                 </div>
                             </div>
 
                             {/* Recent Activity */}
-                            <div className="bg-white rounded-xl shadow-sm p-6 border border-gray-200">
-                                <h2 className="text-xl font-bold text-gray-900 mb-4">{t('teacher.recentActivity')}</h2>
+                            <div className="bg-white shadow-sm p-6 border border-gray-200" style={{borderRadius: '8px'}}>
+                                <h2 className="text-xl font-bold mb-4" style={{color: '#333333'}}>{t('teacher.recentActivity')}</h2>
                                 <div className="space-y-3">
                                     {studentsData.slice(0, 5).map((student, index) => (
-                                        <div key={index} className="flex items-center justify-between p-3 bg-gray-50 rounded-lg">
+                                        <div key={index} className="flex items-center justify-between p-3 bg-gray-50" style={{borderRadius: '8px'}}>
                                             <div className="flex items-center space-x-3">
-                                                <div className="w-8 h-8 bg-blue-500 rounded-full flex items-center justify-center text-white text-sm">
+                                                <div className="w-8 h-8 rounded-full flex items-center justify-center text-white text-sm" style={{backgroundColor: '#0055A4'}}>
                                                     {student.avatar}
                                                 </div>
                                                 <div>
-                                                    <div className="font-semibold text-gray-900">{student.name}</div>
-                                                    <div className="text-sm text-gray-600">{t('teacher.progress')}: {student.progress}%</div>
+                                                    <div className="font-semibold" style={{color: '#333333'}}>{student.name}</div>
+                                                    <div className="text-sm" style={{color: '#757575'}}>{t('teacher.progress')}: {student.progress}%</div>
                                                 </div>
                                             </div>
                                             <div className="text-right">
-                                                <div className="text-sm font-semibold text-gray-900">{t('teacher.level')} {student.level}</div>
+                                                <div className="text-sm font-semibold" style={{color: '#333333'}}>{t('teacher.level')} {student.level}</div>
                                                 <div className="text-xs text-gray-500">{student.lastActive}</div>
                                             </div>
                                         </div>
@@ -284,23 +284,23 @@ const TeacherDashboard = () => {
 
                             {/* Students Needing Attention */}
                             {studentsNeedingAttention.length > 0 && (
-                                <div className="bg-white rounded-xl shadow-sm p-6 border border-gray-200">
-                                    <h2 className="text-xl font-bold text-gray-900 mb-4">⚠️ {t('teacher.studentsNeedingAttention')}</h2>
+                                <div className="bg-white shadow-sm p-6 border border-gray-200" style={{borderRadius: '8px'}}>
+                                    <h2 className="text-xl font-bold mb-4" style={{color: '#333333'}}>⚠️ {t('teacher.studentsNeedingAttention')}</h2>
                                     <div className="space-y-3">
                                         {studentsNeedingAttention.slice(0, 3).map((student, index) => (
-                                            <div key={index} className="flex items-center justify-between p-3 bg-red-50 rounded-lg border border-red-200">
+                                            <div key={index} className="flex items-center justify-between p-3 border" style={{backgroundColor: '#FFEBEE', borderColor: '#FFCDD2', borderRadius: '8px'}}>
                                                 <div className="flex items-center space-x-3">
-                                                    <div className="w-8 h-8 bg-red-500 rounded-full flex items-center justify-center text-white text-sm">
+                                                    <div className="w-8 h-8 rounded-full flex items-center justify-center text-white text-sm" style={{backgroundColor: '#F44336'}}>
                                                         {student.avatar}
                                                     </div>
                                                     <div>
-                                                        <div className="font-semibold text-gray-900">{student.name}</div>
-                                                        <div className="text-sm text-red-600">
+                                                        <div className="font-semibold" style={{color: '#333333'}}>{student.name}</div>
+                                                        <div className="text-sm" style={{color: '#F44336'}}>
                                                             {student.status === 'Inactive' ? 'Inactive for 5+ days' : `Low progress: ${student.progress}%`}
                                                         </div>
                                                     </div>
                                                 </div>
-                                                <button className="bg-red-500 hover:bg-red-600 text-white px-3 py-1 rounded text-sm">
+                                                <button className="text-white px-3 py-1 text-sm" style={{backgroundColor: '#F44336', borderRadius: '8px'}} onMouseOver={(e) => e.target.style.backgroundColor = '#D32F2F'} onMouseOut={(e) => e.target.style.backgroundColor = '#F44336'}>
                                                     {t('teacher.contact')}
                                                 </button>
                                             </div>
@@ -314,38 +314,39 @@ const TeacherDashboard = () => {
                     {/* Leaderboard Tab */}
                     {activeTab === 'leaderboard' && (
                         <div className="space-y-6">
-                            <div className="bg-white rounded-xl shadow-sm p-6 border border-gray-200">
-                                <h2 className="text-xl font-bold text-gray-900 mb-6">🏆 {t('teacher.topPerformers')}</h2>
+                            <div className="bg-white shadow-sm p-6 border border-gray-200" style={{borderRadius: '8px'}}>
+                                <h2 className="text-xl font-bold mb-6" style={{color: '#333333'}}>🏆 {t('teacher.topPerformers')}</h2>
                                 <div className="space-y-4">
                                     {topPerformers.map((student, index) => (
-                                        <div key={index} className={`flex items-center justify-between p-4 rounded-lg ${
-                                            index === 0 ? 'bg-yellow-50 border-2 border-yellow-200' :
-                                            index === 1 ? 'bg-gray-50 border-2 border-gray-200' :
-                                            index === 2 ? 'bg-orange-50 border-2 border-orange-200' :
+                                        <div key={index} className={`flex items-center justify-between p-4 ${
+                                            index === 0 ? 'border-2' :
+                                            index === 1 ? 'border-2' :
+                                            index === 2 ? 'border-2' :
                                             'bg-white border border-gray-200'
-                                        }`}>
+                                        }`} style={{
+                                            borderRadius: '8px',
+                                            backgroundColor: index === 0 ? '#FFF9C4' : index === 1 ? '#F5F5F5' : index === 2 ? '#FFE0B2' : '#FFFFFF',
+                                            borderColor: index === 0 ? '#FDD835' : index === 1 ? '#9E9E9E' : index === 2 ? '#FFB74D' : '#E0E0E0'
+                                        }}>
                                             <div className="flex items-center space-x-4">
-                                                <div className={`w-12 h-12 rounded-full flex items-center justify-center text-white font-bold text-lg ${
-                                                    index === 0 ? 'bg-yellow-500' :
-                                                    index === 1 ? 'bg-gray-400' :
-                                                    index === 2 ? 'bg-orange-500' :
-                                                    'bg-blue-500'
-                                                }`}>
+                                                <div className={`w-12 h-12 rounded-full flex items-center justify-center text-white font-bold text-lg`} style={{
+                                                    backgroundColor: index === 0 ? '#FDD835' : index === 1 ? '#9E9E9E' : index === 2 ? '#FFB74D' : '#0055A4'
+                                                }}>
                                                     {index < 3 ? ['🥇', '🥈', '🥉'][index] : index + 1}
                                                 </div>
                                                 <div className="flex items-center space-x-3">
-                                                    <div className="w-10 h-10 bg-blue-500 rounded-full flex items-center justify-center text-white">
+                                                    <div className="w-10 h-10 rounded-full flex items-center justify-center text-white" style={{backgroundColor: '#0055A4'}}>
                                                         {student.avatar}
                                                     </div>
                                                     <div>
-                                                        <div className="font-bold text-gray-900">{student.name}</div>
-                                                        <div className="text-sm text-gray-600">Level {student.level}</div>
+                                                        <div className="font-bold" style={{color: '#333333'}}>{student.name}</div>
+                                                        <div className="text-sm" style={{color: '#757575'}}>Level {student.level}</div>
                                                     </div>
                                                 </div>
                                             </div>
                                             <div className="text-right">
-                                                <div className="text-2xl font-bold text-gray-900">{student.progress}%</div>
-                                                <div className="text-sm text-gray-600">💎 {student.gems} {t('teacher.gems')}</div>
+                                                <div className="text-2xl font-bold" style={{color: '#333333'}}>{student.progress}%</div>
+                                                <div className="text-sm" style={{color: '#757575'}}>💎 {student.gems} {t('teacher.gems')}</div>
                                             </div>
                                         </div>
                                     ))}
@@ -354,37 +355,37 @@ const TeacherDashboard = () => {
 
                             {/* Performance Categories */}
                             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-                                <div className="bg-white rounded-xl shadow-sm p-6 border border-gray-200">
-                                    <h3 className="text-lg font-bold text-green-700 mb-4">🌟 {t('teacher.excellent')}</h3>
+                                <div className="bg-white shadow-sm p-6 border border-gray-200" style={{borderRadius: '8px'}}>
+                                    <h3 className="text-lg font-bold mb-4" style={{color: '#4CAF50'}}>🌟 {t('teacher.excellent')}</h3>
                                     <div className="space-y-2">
                                         {studentsData.filter(s => s.progress >= 90).map((student, index) => (
                                             <div key={index} className="flex items-center justify-between">
-                                                <span className="text-gray-900">{student.name}</span>
-                                                <span className="text-green-600 font-semibold">{student.progress}%</span>
+                                                <span style={{color: '#333333'}}>{student.name}</span>
+                                                <span className="font-semibold" style={{color: '#4CAF50'}}>{student.progress}%</span>
                                             </div>
                                         ))}
                                     </div>
                                 </div>
 
-                                <div className="bg-white rounded-xl shadow-sm p-6 border border-gray-200">
-                                    <h3 className="text-lg font-bold text-blue-700 mb-4">📈 {t('teacher.good')}</h3>
+                                <div className="bg-white shadow-sm p-6 border border-gray-200" style={{borderRadius: '8px'}}>
+                                    <h3 className="text-lg font-bold mb-4" style={{color: '#0077B6'}}>📈 {t('teacher.good')}</h3>
                                     <div className="space-y-2">
                                         {studentsData.filter(s => s.progress >= 70 && s.progress < 90).map((student, index) => (
                                             <div key={index} className="flex items-center justify-between">
-                                                <span className="text-gray-900">{student.name}</span>
-                                                <span className="text-blue-600 font-semibold">{student.progress}%</span>
+                                                <span style={{color: '#333333'}}>{student.name}</span>
+                                                <span className="font-semibold" style={{color: '#0077B6'}}>{student.progress}%</span>
                                             </div>
                                         ))}
                                     </div>
                                 </div>
 
-                                <div className="bg-white rounded-xl shadow-sm p-6 border border-gray-200">
-                                    <h3 className="text-lg font-bold text-orange-700 mb-4">📚 {t('teacher.improving')}</h3>
+                                <div className="bg-white shadow-sm p-6 border border-gray-200" style={{borderRadius: '8px'}}>
+                                    <h3 className="text-lg font-bold mb-4" style={{color: '#FF9800'}}>📚 {t('teacher.improving')}</h3>
                                     <div className="space-y-2">
                                         {studentsData.filter(s => s.progress >= 50 && s.progress < 70).map((student, index) => (
                                             <div key={index} className="flex items-center justify-between">
-                                                <span className="text-gray-900">{student.name}</span>
-                                                <span className="text-orange-600 font-semibold">{student.progress}%</span>
+                                                <span style={{color: '#333333'}}>{student.name}</span>
+                                                <span className="font-semibold" style={{color: '#FF9800'}}>{student.progress}%</span>
                                             </div>
                                         ))}
                                     </div>
@@ -396,17 +397,20 @@ const TeacherDashboard = () => {
                     {/* Students Tab */}
                     {activeTab === 'students' && (
                         <div className="space-y-6">
-                            <div className="bg-white rounded-xl shadow-sm border border-gray-200">
+                            <div className="bg-white shadow-sm border border-gray-200" style={{borderRadius: '8px'}}>
                                 <div className="p-6 border-b border-gray-200">
                                     <div className="flex justify-between items-center">
-                                        <h2 className="text-xl font-bold text-gray-900">{t('teacher.studentManagement')}</h2>
+                                        <h2 className="text-xl font-bold" style={{color: '#333333'}}>{t('teacher.studentManagement')}</h2>
                                         <div className="flex space-x-3">
                                             <input
                                                 type="text"
                                                 placeholder={t('teacher.searchStudents')}
                                                 value={searchTerm}
                                                 onChange={(e) => setSearchTerm(e.target.value)}
-                                                className="px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                                                className="px-4 py-2 border border-gray-300 focus:ring-2 focus:border-transparent"
+                                                style={{borderRadius: '8px', outline: 'none', boxShadow: 'none'}}
+                                                onFocus={(e) => {e.target.style.boxShadow = '0 0 0 2px rgba(0, 85, 164, 0.2)'; e.target.style.borderColor = '#0055A4'}}
+                                                onBlur={(e) => {e.target.style.boxShadow = 'none'; e.target.style.borderColor = '#D1D5DB'}}
                                             />
                                         </div>
                                     </div>
@@ -429,44 +433,43 @@ const TeacherDashboard = () => {
                                                 <tr key={student.id} className="hover:bg-gray-50">
                                                     <td className="px-6 py-4 whitespace-nowrap">
                                                         <div className="flex items-center">
-                                                            <div className="w-10 h-10 rounded-full bg-blue-500 flex items-center justify-center text-white text-sm">
+                                                            <div className="w-10 h-10 rounded-full flex items-center justify-center text-white text-sm" style={{backgroundColor: '#0055A4'}}>
                                                                 {student.avatar}
                                                             </div>
                                                             <div className="ml-4">
-                                                                <div className="text-sm font-medium text-gray-900">{student.name}</div>
+                                                                <div className="text-sm font-medium" style={{color: '#333333'}}>{student.name}</div>
                                                             </div>
                                                         </div>
                                                     </td>
                                                     <td className="px-6 py-4 whitespace-nowrap">
                                                         <div className="w-full bg-gray-200 rounded-full h-2">
                                                             <div 
-                                                                className="bg-blue-600 h-2 rounded-full" 
-                                                                style={{ width: `${student.progress}%` }}
+                                                                className="h-2 rounded-full" 
+                                                                style={{ width: `${student.progress}%`, backgroundColor: '#0055A4' }}
                                                             ></div>
                                                         </div>
                                                         <span className="text-sm text-gray-500">{student.progress}%</span>
                                                     </td>
-                                                    <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
+                                                    <td className="px-6 py-4 whitespace-nowrap text-sm" style={{color: '#333333'}}>
                                                         Level {student.level}
                                                     </td>
-                                                    <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
+                                                    <td className="px-6 py-4 whitespace-nowrap text-sm" style={{color: '#333333'}}>
                                                         💎 {student.gems}
                                                     </td>
                                                     <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
                                                         {student.lastActive}
                                                     </td>
                                                     <td className="px-6 py-4 whitespace-nowrap">
-                                                        <span className={`inline-flex px-2 py-1 text-xs font-semibold rounded-full ${
-                                                            student.status === 'Active' 
-                                                                ? 'bg-green-100 text-green-800' 
-                                                                : 'bg-red-100 text-red-800'
-                                                        }`}>
+                                                        <span className={`inline-flex px-2 py-1 text-xs font-semibold rounded-full`} style={{
+                                                            backgroundColor: student.status === 'Active' ? '#E8F5E9' : '#FFEBEE',
+                                                            color: student.status === 'Active' ? '#4CAF50' : '#F44336'
+                                                        }}>
                                                             {student.status}
                                                         </span>
                                                     </td>
                                                     <td className="px-6 py-4 whitespace-nowrap text-sm font-medium">
-                                                        <button className="text-indigo-600 hover:text-indigo-900 mr-3">{t('teacher.view')}</button>
-                                                        <button className="text-gray-600 hover:text-gray-900">{t('teacher.message')}</button>
+                                                        <button style={{color: '#0055A4'}} onMouseOver={(e) => e.target.style.color = '#003D7A'} onMouseOut={(e) => e.target.style.color = '#0055A4'} className="mr-3">{t('teacher.view')}</button>
+                                                        <button style={{color: '#757575'}} onMouseOver={(e) => e.target.style.color = '#333333'} onMouseOut={(e) => e.target.style.color = '#757575'}>{t('teacher.message')}</button>
                                                     </td>
                                                 </tr>
                                             ))}
@@ -480,10 +483,10 @@ const TeacherDashboard = () => {
                     {/* Classes Tab */}
                     {activeTab === 'classes' && (
                         <div className="space-y-6">
-                            <div className="bg-white rounded-xl shadow-sm p-6 border border-gray-200">
+                            <div className="bg-white shadow-sm p-6 border border-gray-200" style={{borderRadius: '8px'}}>
                                 <div className="flex justify-between items-center mb-6">
-                                    <h2 className="text-xl font-bold text-gray-900">{t('teacher.classesManagement')}</h2>
-                                    <button className="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded-lg flex items-center space-x-2 transition-colors">
+                                    <h2 className="text-xl font-bold" style={{color: '#333333'}}>{t('teacher.classesManagement')}</h2>
+                                    <button className="text-white px-4 py-2 flex items-center space-x-2 transition-colors" style={{backgroundColor: '#0055A4', borderRadius: '8px'}} onMouseOver={(e) => e.target.style.backgroundColor = '#003D7A'} onMouseOut={(e) => e.target.style.backgroundColor = '#0055A4'}>
                                         <span>➕</span>
                                         <span>{t('teacher.createNewClass')}</span>
                                     </button>
@@ -495,27 +498,31 @@ const TeacherDashboard = () => {
                                         <div 
                                             key={classData.id}
                                             onClick={() => handleClassClick(classData)}
-                                            className="border border-gray-200 rounded-lg p-4 hover:shadow-md transition-all cursor-pointer hover:border-indigo-300"
+                                            className="border border-gray-200 p-4 hover:shadow-md transition-all cursor-pointer"
+                                            style={{borderRadius: '8px'}}
+                                            onMouseOver={(e) => e.target.style.borderColor = '#0055A4'}
+                                            onMouseOut={(e) => e.target.style.borderColor = '#E5E7EB'}
                                         >
                                             <div className="flex justify-between items-start">
                                                 <div className="flex items-start space-x-4">
-                                                    <div className={`w-12 h-12 rounded-lg flex items-center justify-center text-white text-2xl ${
-                                                        classData.subject === 'mathematics' ? 'bg-orange-500' :
-                                                        classData.subject === 'physics' ? 'bg-blue-500' :
-                                                        classData.subject === 'chemistry' ? 'bg-green-500' :
-                                                        'bg-purple-500'
-                                                    }`}>
+                                                    <div className={`w-12 h-12 flex items-center justify-center text-white text-2xl`} style={{
+                                                        borderRadius: '8px',
+                                                        backgroundColor: classData.subject === 'mathematics' ? '#FF9800' :
+                                                                        classData.subject === 'physics' ? '#0055A4' :
+                                                                        classData.subject === 'chemistry' ? '#4CAF50' : '#673AB7'
+                                                    }}>
                                                         {classData.subject === 'mathematics' ? '🧮' :
                                                          classData.subject === 'physics' ? '⚛️' :
                                                          classData.subject === 'chemistry' ? '🧪' : '📚'}
                                                     </div>
                                                     <div>
-                                                        <h3 className="text-lg font-semibold text-gray-900">{classData.className}</h3>
-                                                        <p className="text-gray-600 text-sm mt-1">{classData.totalStudents} students • {classData.room} • {classData.schedule}</p>
+                                                        <h3 className="text-lg font-semibold" style={{color: '#333333'}}>{classData.className}</h3>
+                                                        <p className="text-sm mt-1" style={{color: '#757575'}}>{classData.totalStudents} students • {classData.room} • {classData.schedule}</p>
                                                         <div className="flex space-x-4 mt-2">
-                                                            <span className={`px-2 py-1 rounded-full text-xs ${
-                                                                classData.status === 'Active' ? 'bg-green-100 text-green-800' : 'bg-yellow-100 text-yellow-800'
-                                                            }`}>
+                                                            <span className={`px-2 py-1 rounded-full text-xs`} style={{
+                                                                backgroundColor: classData.status === 'Active' ? '#E8F5E9' : '#FFF3E0',
+                                                                color: classData.status === 'Active' ? '#4CAF50' : '#FF9800'
+                                                            }}>
                                                                 {classData.status}
                                                             </span>
                                                             <span className="text-gray-500 text-xs">Next: {classData.nextClass}</span>
@@ -528,7 +535,10 @@ const TeacherDashboard = () => {
                                                             e.stopPropagation();
                                                             handleClassClick(classData);
                                                         }}
-                                                        className="text-blue-500 hover:text-blue-700 px-3 py-1 text-sm bg-blue-50 rounded-lg hover:bg-blue-100 transition-colors"
+                                                        className="px-3 py-1 text-sm transition-colors"
+                                                        style={{color: '#0055A4', backgroundColor: '#E3F2FD', borderRadius: '8px'}}
+                                                        onMouseOver={(e) => {e.target.style.backgroundColor = '#BBDEFB'; e.target.style.color = '#003D7A'}}
+                                                        onMouseOut={(e) => {e.target.style.backgroundColor = '#E3F2FD'; e.target.style.color = '#0055A4'}}
                                                     >
                                                         📝 Manage
                                                     </button>
