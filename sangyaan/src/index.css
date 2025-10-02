@@ -1,18 +1,32 @@
 /* Tailwind v4: use the single entry import */
 @import "tailwindcss";
 
-/* Theme Variables - Matching original design */
-:root {
-  --primary: #22C55E;
-  --action: #FF8A00;
-  --success: #16A34A;
-  --error: #EF4444;
-  --accent: #7C3AED;
-  --bg: #F8FAFC;
-  --card: #FFFFFF;
-  --text: #0F172A;
+/* Import Noto Sans fonts for SANGYAAN design theme */
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans:wght@300;400;500;600;700&family=Noto+Sans+Devanagari:wght@300;400;500;600;700&display=swap');
 
-  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
+/* Theme Variables - SANGYAAN Design Theme */
+:root {
+  /* Primary Colors */
+  --primary: #0055A4;
+  --secondary: #0077B6;
+  
+  /* Secondary Colors */
+  --success: #4CAF50;
+  --warning: #FF9800;
+  --error: #F44336;
+  
+  /* Neutral Colors */
+  --text-primary: #333333;
+  --text-secondary: #757575;
+  --bg: #F5F5F5;
+  --card: #FFFFFF;
+  --text: #333333;
+  
+  /* Legacy support */
+  --action: #0077B6;
+  --accent: #0055A4;
+
+  font-family: 'Noto Sans', 'Noto Sans Devanagari', system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
   font-weight: 400;
   font-synthesis: none;
@@ -22,25 +36,33 @@
 }
 
 [data-theme="calm"] {
-  --primary: #2563EB;
-  --action: #06B6D4;
-  --success: #16A34A;
-  --error: #EF4444;
-  --accent: #F59E0B;
+  --primary: #0055A4;
+  --secondary: #0077B6;
+  --action: #0077B6;
+  --success: #4CAF50;
+  --error: #F44336;
+  --warning: #FF9800;
+  --accent: #0055A4;
   --bg: #F1F5F9;
   --card: #FFFFFF;
-  --text: #0F172A;
+  --text: #333333;
+  --text-primary: #333333;
+  --text-secondary: #757575;
 }
 
 [data-theme="contrast"] {
-  --primary: #004E89;
-  --action: #FFB703;
-  --success: #198754;
-  --error: #D00000;
-  --accent: #00A6A6;
+  --primary: #0055A4;
+  --secondary: #0077B6;
+  --action: #0077B6;
+  --success: #4CAF50;
+  --error: #F44336;
+  --warning: #FF9800;
+  --accent: #0055A4;
   --bg: #FFFFFF;
   --card: #F7F7F7;
-  --text: #081124;
+  --text: #333333;
+  --text-primary: #333333;
+  --text-secondary: #757575;
 }
 
 /* Custom Animations */
