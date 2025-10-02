@@ -1,122 +1,149 @@
-# SANGYAAN - Smart Education Infrastructure for Digital India
+#️⃣ SANGYAAN — Smart Education Infrastructure for Digital India 🚀🇮🇳
 
-SANGYAAN is a unified digital backbone designed to address the fragmentation of India's education ecosystem by connecting students, teachers, institutions, industries, and government within one interoperable platform. Aligned with NEP 2020, it ensures equal opportunities for rural and urban learners, moving beyond marks to track progress through merit, projects, and verified achievements.
+SANGYAAN is an offline-first, gamified Progressive Web App (PWA) designed to bridge the rural education gap in India. It focuses on engagement, accessible STEM learning, and teacher-centred analytics — all optimized for low-cost Android devices.
 
-## 🎯 About SANGYAAN
+✨ Core ideas: portable student profiles, verifiable badges (OpenBadges 3.0), modular content packs, multilingual UI (English / हिंदी / ଓଡ଼ିଆ), and teacher analytics.
 
-The idea of SANGYAAN is to streamline the fragmented parts of India's education system, each with its own problems, while closely following the vision of NEP 2020. What we need is not another app, but a digital infrastructure that gives equal opportunities to rural schools and colleges, and that tracks student progress not just by marks, but also through merit, achievements, and real contributions.
+---
 
-When we first started thinking about Sangyaan, the frustration was simple: India already has all the right pieces — schools, colleges, skilling centers, industries, and government schemes — but they exist in pieces. A student earns marks in school, enters college, learns some more, maybe picks up a certificate or two, and eventually looks for a job. But at every stage, the data is fragmented, the learning is generic, and there is no portable proof of skills that can be trusted across systems.
+## 🎯 Highlights
 
-### Key Innovation
+- Gamified learning: levels, XP, badges, mini-games and virtual labs 🏆🎮
+- Offline-first: local-first storage with IndexedDB (Dexie), service worker caching, and background sync ⚡🗃️
+- Teacher & parent dashboards: visual analytics, reports and classroom tools 📊👩‍🏫👨‍👧
+- Lightweight & responsive: tuned for low-end Android phones and tablets 📱�️
+- Multilingual: English + Hindi (Odia scaffolded) — extendable to other regional languages 🌐
 
-Our idea was to design a digital backbone that ties all of these players together. Imagine a platform where a student's journey — whether it's a quiz in class 8, a project in semester 5, or an internship with a local company — all flows into a single, verifiable digital profile. Teachers can upload their own content in their own language, without complicated tools. Colleges and schools can integrate seamlessly with national databases like UDISE+ or NSDC. Industries can push projects, hackathons, and internships directly into the ecosystem through APIs. And government bodies can monitor real-time trends — seeing where skills are strong, where dropouts are happening, and where interventions are most needed.
+---
 
-The key to making this engaging is gamification and adaptive learning. Instead of treating education as a monotonous march of textbooks and exams, Sangyaan layers in battles, challenges, badges, and events. But it's not gamification for the sake of fun — achievements are tied to OpenBadges 3.0, cryptographically secure and portable, so a badge earned in school can later matter in college admissions or even in a job portfolio.
+## 🚀 Quick Start (Developer)
 
-## 🎥 Demo & Resources
-
-**Watch our YouTube playlist:** [SANGYAAN Demo & Overview](https://www.youtube.com/playlist?list=PLWABiP-xXAul-FRsqtXUvB1ylOcRmHPUD)
-
-## 🌐 Live Deployments
-
-- **GitHub Pages:** [https://ng196.github.io/SIH-2025/](https://ng196.github.io/SIH-2025/)
-- **Netlify:** [Coming soon - Deploy your own instance!]
-
-## 🚀 Deployment
-
-This project is now configured for easy deployment to multiple platforms:
-
-### GitHub Pages
-
-1. Go to your repository Settings → Pages
-2. Under "Build and deployment", select "GitHub Actions" as the source
-3. Push to the `main` branch, and the site will automatically deploy
-4. Your site will be available at: `https://username.github.io/repository-name/`
-
-The GitHub Actions workflow (`.github/workflows/deploy.yml`) is already configured and will run automatically.
-
-### Netlify
-
-#### Option 1: Connect via Netlify Dashboard
-1. Log in to [Netlify](https://netlify.com)
-2. Click "Add new site" → "Import an existing project"
-3. Connect your GitHub repository
-4. Netlify will auto-detect the `netlify.toml` configuration
-5. Click "Deploy site"
-
-#### Option 2: Deploy from Command Line
-```bash
-npm install -g netlify-cli
-cd sangyaan
-npm run build
-netlify deploy --prod --dir=dist
-```
-
-### Vercel
-
-#### Option 1: Connect via Vercel Dashboard
-1. Log in to [Vercel](https://vercel.com)
-2. Click "Add New" → "Project"
-3. Import your GitHub repository
-4. Vercel will auto-detect the `vercel.json` configuration
-5. Click "Deploy"
-
-#### Option 2: Deploy from Command Line
-```bash
-npm install -g vercel
-vercel --prod
-```
-
-### Other Static Hosting Platforms
-
-The site can be deployed to any static hosting platform (Cloudflare Pages, Render, Firebase Hosting, etc.):
-
-1. Build the project:
-   ```bash
-   cd sangyaan
-   npm install
-   npm run build
-   ```
-
-2. Upload the contents of `sangyaan/dist/` to your hosting platform
-
-## 🛠️ Local Development
+Run the app locally (from the `sangyaan` folder):
 
 ```bash
 cd sangyaan
-npm install
+npm ci
 npm run dev
 ```
 
-## 📁 Project Structure
+Build for production:
 
-- `sangyaan/` - Main React application
-- `cloud/` - Backend/cloud functions
-- `design/` - Design assets and prototypes
-- `files/` - Documentation and data files
+```bash
+cd sangyaan
+npm run build
+```
 
-## 🔧 Configuration
+### Deployment options
 
-- `vite.config.js` - Vite build configuration with relative paths for deployment
-- `netlify.toml` - Netlify deployment configuration
-- `vercel.json` - Vercel deployment configuration
-- `.github/workflows/deploy.yml` - GitHub Pages deployment workflow
+- GitHub Pages — see `.github/workflows/deploy.yml` 🟢
+- Netlify — configured by `netlify.toml` 🔁
+- Vercel — `vercel.json` ▶️
 
-## ⚡ Key Features
+## 📁 Where to look (key files)
 
-- **Unified Digital Profile**: Track student journey from school to employment with verifiable credentials
-- **Gamification & Adaptive Learning**: Battles, challenges, badges tied to OpenBadges 3.0
-- **Multi-stakeholder Platform**: Connects students, teachers, institutions, industries, and government
-- **Offline-First Design**: Works in rural and low-bandwidth areas with downloadable content packs
-- **AI-Powered Personalization**: Adaptive pathways based on pace, strengths, and aspirations
-- **Multilingual Support**: Content creation and learning in multiple Indian languages
-- **Secure Credentials**: OAuth, JWT, and cryptographic security for national-scale deployment
-- **Progressive Web App (PWA)**: Mobile-first, offline functionality with Service Workers
-- **Institution Management**: Simple dashboards for scheduling, attendance, and progress tracking
-- **Industry Integration**: APIs for projects, hackathons, and internships
-- **National Database Integration**: Seamless connection with UDISE+ and NSDC
+- App root: `sangyaan/` (React + Vite)
+- PWA entry: `sangyaan/index.html`, `sangyaan/public/manifest.json`
+- Local DB: `sangyaan/src/db.js` (Dexie schema & helpers)
+- Virtual labs & games: `sangyaan/src/components/VirtualLab.jsx`, `sangyaan/src/components/ChemistryLab.jsx`
+- Quiz engine: `sangyaan/src/components/Quiz.jsx`
+- Language system: `sangyaan/src/contexts/LanguageContext.jsx`
+- Cloud stubs: `cloud/firebase.js`, `cloud/gpt_nano.js`
+- Product docs: `files/PRD.txt`
+
+---
+
+## 🧩 Minimal MVP mapping
+
+### Gamified modules (2–3 subjects)
+- Physics simulations (gravity, motion): `VirtualLab.jsx` ⚙️
+- Math puzzles (algebra, geometry): `Quiz.jsx` 🧮
+- Chemistry matching: `ChemistryLab.jsx` 🔬
+
+### Offline-first architecture
+- IndexedDB via Dexie: `sangyaan/src/db.js` 🗃️
+- PWA manifest + service worker scaffold: `sangyaan/public/manifest.json` + (recommended) `public/sw.js` 🖥️
+
+### Analytics & dashboards
+- Teacher dashboard: `sangyaan/src/components/TeacherDaashboard.jsx` 📊
+- Parent dashboard: `sangyaan/src/components/ParentsDashboard.jsx` 👪
+
+### UI & accessibility
+- Tailwind configuration: `sangyaan/tailwind.config.js` 🎨
+- Responsive components: `sangyaan/src/components/` 📱
+
+---
+
+## 🏗️ High-level architecture
+
+Below is a simplified high-level architecture showing the offline-first flow, local storage, sync and cloud endpoints.
+
+![Architecture diagram](./sangyaan/public/architecture/architecture.png)
+
+<details>
+  <summary>Mermaid source (click to expand)</summary>
+
+```mermaid
+---
+config:
+  layout: dagre
+  theme: neo
+  look: neo
+---
+flowchart LR
+ subgraph Device["Device — Offline-first PWA"]
+    direction LR
+        Browser["Mobile PWA UI"]
+        SW["Service Worker<br>precache, runtime cache, bg-sync"]
+        Dexie["IndexedDB<br>Dexie wrapper"]
+        Outbox["Sync Queue / Outbox"]
+        Resolver["Conflict Resolver"]
+  end
+ subgraph Network["Connectivity"]
+        Net["Online / Offline"]
+  end
+ subgraph Cloud["Cloud Backend & Services"]
+    direction TB
+        API["Sync API / Telemetry Endpoint"]
+        Auth["Auth / Identity<br>JWT / OAuth"]
+        Storage["Content Packs / Blob Storage"]
+        Analytics["Analytics & Reporting"]
+  end
+    Browser -- read / write --> Dexie
+    Browser -- HTTP fetch / asset requests --> SW
+    Browser -- enqueue events --> Outbox
+    Dexie -- persist events / progress --> Outbox
+    Outbox -- "when online / bg-sync" --> SW
+    SW -- "background sync (tag: sync-events)" --> API
+    SW -- serve cached assets --> Dexie
+    API --> Auth & Storage & Analytics
+    API -- ack / delta responses --> Outbox
+    API -- conflict detected --> Resolver
+    Resolver -- merge result --> Dexie
+    API -- push updated content --> Dexie
+    Net -- online --> SW
+    Net -- offline --> SW
+    SW -. on fetch miss: fallback to Dexie/cache .-> Dexie
+    SW -. on failed POST: enqueue to Outbox .-> Outbox
+     API:::cloud
+     Auth:::cloud
+     Storage:::cloud
+     Analytics:::cloud
+    classDef cloud fill:#f9c,stroke:#333,stroke-width:1px
+    style Cloud stroke:#00C853
+    style Network stroke:#2962FF
+    style Device stroke:#AA00FF
+
+
+```
+
+</details>
+
+
+## 📄 Contributing
+
+Please read `sangyaan/README.md` first for app-level developer notes. Open issues for features or bugs and include device/browser details when reporting offline/sync issues.
 
 ## 📝 License
 
 See repository for license information.
+
