@@ -1,7 +1,7 @@
 /* Learn Container */
 .learn-container {
     min-height: 100vh;
-    background: linear-gradient(135deg, #e0eafc 0%, #cfdef3 100%);
+    background: #F5F5F5;
 }
 
 /* Level View Container */
@@ -21,27 +21,30 @@
 }
 
 .back-btn {
-    background: rgba(255, 255, 255, 0.9);
-    border: 1px solid #e5e7eb;
+    background: #FFFFFF;
+    border: 1px solid #E5E7EB;
     padding: 0.75rem 1.5rem;
     border-radius: 8px;
     cursor: pointer;
     font-weight: 500;
-    color: #374151;
+    color: #333333;
     transition: all 0.2s ease;
     white-space: nowrap;
+    min-height: 44px;
 }
 
 .back-btn:hover {
-    background: white;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    background: #FFFFFF;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    transform: translateY(-2px);
+    border-color: #0077B6;
 }
 
 .current-path {
     flex: 1;
-    background: white;
+    background: #FFFFFF;
     padding: 1.5rem;
-    border-radius: 12px;
+    border-radius: 8px;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
 }
 
@@ -56,17 +59,18 @@
 .subject-name {
     font-size: 1.25rem;
     font-weight: 600;
+    color: #0055A4;
 }
 
 .path-separator {
-    color: #6b7280;
+    color: #757575;
     font-size: 1.25rem;
 }
 
 .topic-name {
     font-size: 1.25rem;
     font-weight: 600;
-    color: #1f2937;
+    color: #333333;
 }
 
 .progress-summary {
@@ -77,7 +81,7 @@
 
 .progress-text {
     font-size: 0.875rem;
-    color: #6b7280;
+    color: #757575;
     font-weight: 500;
     white-space: nowrap;
 }
@@ -85,16 +89,18 @@
 .progress-bar {
     flex: 1;
     height: 8px;
-    background-color: #e5e7eb;
-    border-radius: 4px;
+    background-color: #F5F5F5;
+    border-radius: 8px;
     overflow: hidden;
     min-width: 100px;
+    border: 1px solid #E5E7EB;
 }
 
 .progress-fill {
     height: 100%;
-    border-radius: 4px;
+    border-radius: 8px;
     transition: width 0.3s ease;
+    background-color: #4CAF50;
 }
 
 /* Level Content */
@@ -105,10 +111,10 @@
 
 /* Topic Info Banner */
 .topic-info-banner {
-    background: white;
+    background: #FFFFFF;
     padding: 2rem;
-    border-radius: 16px;
-    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
     margin-bottom: 3rem;
     display: flex;
     align-items: center;
@@ -122,8 +128,8 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    background: #f3f4f6;
-    border-radius: 16px;
+    background: #F5F5F5;
+    border-radius: 8px;
     flex-shrink: 0;
 }
 
@@ -133,16 +139,17 @@
 
 .topic-details h2 {
     font-size: 2rem;
-    color: #1f2937;
+    color: #333333;
     margin: 0 0 0.5rem 0;
-    font-weight: 700;
+    font-weight: 600;
 }
 
 .topic-details p {
-    color: #6b7280;
-    font-size: 1.1rem;
+    color: #757575;
+    font-size: 1rem;
     line-height: 1.6;
     margin: 0 0 1.5rem 0;
+    font-weight: 400;
 }
 
 .topic-stats {
@@ -153,12 +160,12 @@
 
 .stat {
     font-size: 0.875rem;
-    color: #6b7280;
+    color: #757575;
     font-weight: 500;
     padding: 0.5rem 1rem;
-    background: #f9fafb;
+    background: #F5F5F5;
     border-radius: 8px;
-    border: 1px solid #e5e7eb;
+    border: 1px solid #E5E7EB;
 }
 
 /* Mobile Responsive */
@@ -240,6 +247,10 @@
     .progress-fill {
         transition: none;
     }
+    
+    .back-btn:hover {
+        transform: none;
+    }
 }
 
 /* High contrast mode */
@@ -251,6 +262,12 @@
     }
 
     .stat {
-        border: 1px solid #000;
+        border: 2px solid #000;
     }
+}
+
+/* Focus Visible */
+.back-btn:focus-visible {
+    outline: 3px solid #0055A4;
+    outline-offset: 2px;
 }
