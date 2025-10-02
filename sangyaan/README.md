@@ -1,14 +1,19 @@
-# STEM Quest - Sangyaan
+# SANGYAAN - Smart Education Infrastructure for Digital India
 
-A gamified STEM learning platform built with React, Vite, Tailwind CSS v4, and IndexedDB for offline functionality.
+A unified digital backbone for India's education ecosystem, connecting students, teachers, institutions, industries, and government. Built with React, Vite, Tailwind CSS v4, and IndexedDB for offline functionality.
 
 ## Features
 
-- **Interactive Homepage**: Gamified dashboard with learning progress, XP tracking, and achievements
+- **Unified Student Profile**: Track academic journey, achievements, and verified credentials (OpenBadges 3.0)
+- **Gamified Learning**: Interactive dashboard with XP tracking, battles, challenges, and achievements
+- **Adaptive AI Pathways**: Personalized learning based on pace, strengths, and aspirations
+- **Multi-stakeholder Platform**: Seamless integration for students, teachers, institutions, and industries
 - **Theme System**: Three accessible color themes (Playful Growth, Calm Focus, High Contrast)
 - **Learning Paths**: Visual progress tracking through STEM subjects
-- **Offline Support**: PWA with IndexedDB for offline functionality
+- **Offline Support**: PWA with IndexedDB for rural and low-bandwidth areas
+- **Multilingual**: Full support for English, Hindi, and Odia with easy content creation
 - **Responsive Design**: Works across desktop, tablet, and mobile devices
+- **Institution Management**: Built-in tools for scheduling, attendance, and progress tracking
 
 ## Tech Stack
 
