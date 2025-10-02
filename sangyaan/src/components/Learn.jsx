@@ -224,7 +224,7 @@ const Learn = () => {
                         </button>
                         <div className="current-path">
                             <div className="path-info">
-                                <span className="subject-name" style={{ color: selectedSubject.color }}>
+                                <span className="subject-name">
                                     {selectedSubject.name}
                                 </span>
                                 <span className="path-separator">→</span>
@@ -238,8 +238,7 @@ const Learn = () => {
                                     <div
                                         className="progress-fill"
                                         style={{
-                                            width: `${(currentLevelData.completedLevels.length / currentLevelData.totalLevels) * 100}%`,
-                                            backgroundColor: selectedSubject.color
+                                            width: `${(currentLevelData.completedLevels.length / currentLevelData.totalLevels) * 100}%`
                                         }}
                                     ></div>
                                 </div>
