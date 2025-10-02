@@ -1,18 +1,33 @@
 /* Tailwind v4: use the single entry import */
 @import "tailwindcss";
 
-/* Theme Variables - Matching original design */
-:root {
-  --primary: #22C55E;
-  --action: #FF8A00;
-  --success: #16A34A;
-  --error: #EF4444;
-  --accent: #7C3AED;
-  --bg: #F8FAFC;
-  --card: #FFFFFF;
-  --text: #0F172A;
+/* Import Noto Sans Font for SANGYAAN Design Theme */
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans:wght@300;400;500;600&family=Noto+Sans+Devanagari:wght@300;400;500;600&display=swap');
 
-  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
+/* SANGYAAN Design Theme Variables */
+:root {
+  /* Primary Colors */
+  --primary: #0055A4;
+  --secondary: #0077B6;
+  
+  /* Secondary Colors */
+  --success: #4CAF50;
+  --warning: #FF9800;
+  --error: #F44336;
+  
+  /* Neutral Colors */
+  --dark-gray: #333333;
+  --medium-gray: #757575;
+  --light-gray: #F5F5F5;
+  
+  /* Legacy support for existing themes */
+  --action: #FF9800;
+  --accent: #0077B6;
+  --bg: #F5F5F5;
+  --card: #FFFFFF;
+  --text: #333333;
+
+  font-family: 'Noto Sans', 'Noto Sans Devanagari', system-ui, sans-serif;
   line-height: 1.5;
   font-weight: 400;
   font-synthesis: none;
@@ -22,14 +37,17 @@
 }
 
 [data-theme="calm"] {
-  --primary: #2563EB;
-  --action: #06B6D4;
-  --success: #16A34A;
-  --error: #EF4444;
-  --accent: #F59E0B;
-  --bg: #F1F5F9;
+  /* SANGYAAN Government Standard Theme */
+  --primary: #0055A4;
+  --secondary: #0077B6;
+  --action: #FF9800;
+  --success: #4CAF50;
+  --error: #F44336;
+  --accent: #0077B6;
+  --bg: #F5F5F5;
   --card: #FFFFFF;
-  --text: #0F172A;
+  --text: #333333;
+  --warning: #FF9800;
 }
 
 [data-theme="contrast"] {

@@ -92,43 +92,45 @@ const ParentsDashboard = () => {
 
     if (isLoading) {
         return (
-            <div className="min-h-screen bg-blue-50 flex items-center justify-center">
+            <div className="min-h-screen flex items-center justify-center" style={{backgroundColor: '#F5F5F5'}}>
                     <div className="text-center">
                     <div className="text-4xl mb-4">📚</div>
-                    <div className="text-xl text-gray-600">{t('loading') || 'Loading...'}</div>
+                    <div className="text-xl" style={{color: '#757575'}}>{t('loading') || 'Loading...'}</div>
                 </div>
             </div>
         );
     }
 
     return (
-        <div className="min-h-screen bg-blue-50">
+        <div className="min-h-screen" style={{backgroundColor: '#F5F5F5'}}>
             {/* Header */}
             <div className="bg-white shadow-sm">
                 <div className="max-w-6xl mx-auto px-4 py-6">
                     <div className="flex items-center justify-between">
                         <div className="flex items-center space-x-4">
-                            <div className="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center text-3xl">
+                            <div className="w-16 h-16 rounded-full flex items-center justify-center text-3xl" style={{backgroundColor: '#E3F2FD'}}>
                                 {childData.avatar}
                             </div>
                             <div>
-                                <h1 className="text-2xl font-bold text-gray-900">{childData.name}</h1>
-                                <p className="text-lg text-gray-600">{childData.grade} • {t('parent.currentLevel')} {childData.currentLevel}</p>
+                                <h1 className="text-2xl font-bold" style={{color: '#333333'}}>{childData.name}</h1>
+                                <p className="text-lg" style={{color: '#757575'}}>{childData.grade} • {t('parent.currentLevel')} {childData.currentLevel}</p>
                             </div>
                         </div>
                         <div className="text-right">
                             <div className="flex items-center justify-end space-x-2 mb-2">
                                 <button
                                     onClick={() => changeLanguage('en')}
-                                    className={`px-2 py-1 rounded text-xs ${currentLanguage === 'en' ? 'bg-blue-600 text-white' : 'bg-gray-100 text-gray-700'}`}
+                                    className={`px-2 py-1 rounded text-xs ${currentLanguage === 'en' ? 'text-white' : 'bg-gray-100'}`}
+                                    style={currentLanguage === 'en' ? {backgroundColor: '#0055A4', color: '#FFFFFF'} : {color: '#757575'}}
                                 >EN</button>
                                 <button
                                     onClick={() => changeLanguage('hi')}
-                                    className={`px-2 py-1 rounded text-xs ${currentLanguage === 'hi' ? 'bg-blue-600 text-white' : 'bg-gray-100 text-gray-700'}`}
+                                    className={`px-2 py-1 rounded text-xs ${currentLanguage === 'hi' ? 'text-white' : 'bg-gray-100'}`}
+                                    style={currentLanguage === 'hi' ? {backgroundColor: '#0055A4', color: '#FFFFFF'} : {color: '#757575'}}
                                 >हिं</button>
                             </div>
                             <div className="text-sm text-gray-500">{t('parent.headerLastActive')}</div>
-                            <div className="text-lg font-semibold text-green-600">{childData.lastActive}</div>
+                            <div className="text-lg font-semibold" style={{color: '#4CAF50'}}>{childData.lastActive}</div>
                         </div>
                     </div>
                 </div>
@@ -136,7 +138,7 @@ const ParentsDashboard = () => {
 
             {/* Navigation Tabs */}
             <div className="max-w-6xl mx-auto px-4 mt-6">
-                <div className="bg-white rounded-lg shadow-sm p-2">
+                <div className="bg-white shadow-sm p-2" style={{borderRadius: '8px'}}>
                     <div className="flex space-x-2">
                         {[
                             { id: 'overview', name: t('parent.tabsOverview'), icon: '📊' },
@@ -148,11 +150,16 @@ const ParentsDashboard = () => {
                             <button
                                 key={tab.id}
                                 onClick={() => setActiveTab(tab.id)}
-                                className={`flex items-center space-x-2 px-6 py-3 rounded-lg font-medium transition-colors ${
+                                className={`flex items-center space-x-2 px-6 py-3 font-medium transition-colors ${
                                     activeTab === tab.id
-                                        ? 'bg-blue-500 text-white'
-                                        : 'text-gray-600 hover:bg-gray-100'
+                                        ? 'text-white'
+                                        : 'hover:bg-gray-100'
                                 }`}
+                                style={{
+                                    borderRadius: '8px',
+                                    backgroundColor: activeTab === tab.id ? '#0055A4' : 'transparent',
+                                    color: activeTab === tab.id ? '#FFFFFF' : '#757575'
+                                }}
                             >
                                 <span className="text-xl">{tab.icon}</span>
                                 <span className="text-lg">{tab.name}</span>
@@ -168,46 +175,46 @@ const ParentsDashboard = () => {
                 {activeTab === 'overview' && (
                     <div className="space-y-6">
                         {/* Progress Summary */}
-                        <div className="bg-white rounded-lg shadow-sm p-6">
-                            <h2 className="text-2xl font-bold text-gray-900 mb-6">📈 {t('parent.overallProgress')}</h2>
+                        <div className="bg-white shadow-sm p-6" style={{borderRadius: '8px'}}>
+                            <h2 className="text-2xl font-bold mb-6" style={{color: '#333333'}}>📈 {t('parent.overallProgress')}</h2>
                             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
                                 <div className="text-center">
-                                    <div className="w-24 h-24 mx-auto bg-green-100 rounded-full flex items-center justify-center mb-3">
-                                        <div className="text-3xl font-bold text-green-600">{childData.overallProgress}%</div>
+                                    <div className="w-24 h-24 mx-auto rounded-full flex items-center justify-center mb-3" style={{backgroundColor: '#E8F5E9'}}>
+                                        <div className="text-3xl font-bold" style={{color: '#4CAF50'}}>{childData.overallProgress}%</div>
                                     </div>
-                                    <div className="text-lg font-semibold text-gray-900">{t('parent.overallProgress')}</div>
-                                    <div className="text-gray-600">{t('excellentWork') || 'Excellent work!'}</div>
+                                    <div className="text-lg font-semibold" style={{color: '#333333'}}>{t('parent.overallProgress')}</div>
+                                    <div style={{color: '#757575'}}>{t('excellentWork') || 'Excellent work!'}</div>
                                 </div>
                                 <div className="text-center">
-                                    <div className="w-24 h-24 mx-auto bg-blue-100 rounded-full flex items-center justify-center mb-3">
-                                        <div className="text-2xl font-bold text-blue-600">{t('parent.currentLevel')} {childData.currentLevel}</div>
+                                    <div className="w-24 h-24 mx-auto rounded-full flex items-center justify-center mb-3" style={{backgroundColor: '#E3F2FD'}}>
+                                        <div className="text-2xl font-bold" style={{color: '#0055A4'}}>{t('parent.currentLevel')} {childData.currentLevel}</div>
                                     </div>
-                                    <div className="text-lg font-semibold text-gray-900">{t('parent.currentLevel')}</div>
-                                    <div className="text-gray-600">{t('keepItUp') || 'Keep it up!'}</div>
+                                    <div className="text-lg font-semibold" style={{color: '#333333'}}>{t('parent.currentLevel')}</div>
+                                    <div style={{color: '#757575'}}>{t('keepItUp') || 'Keep it up!'}</div>
                                 </div>
                                 <div className="text-center">
-                                    <div className="w-24 h-24 mx-auto bg-purple-100 rounded-full flex items-center justify-center mb-3">
-                                        <div className="text-lg font-bold text-purple-600">{childData.weeklyStudyTime}</div>
+                                    <div className="w-24 h-24 mx-auto rounded-full flex items-center justify-center mb-3" style={{backgroundColor: '#F3E5F5'}}>
+                                        <div className="text-lg font-bold" style={{color: '#673AB7'}}>{childData.weeklyStudyTime}</div>
                                     </div>
-                                    <div className="text-lg font-semibold text-gray-900">{t('parent.thisWeek')}</div>
-                                    <div className="text-gray-600">{t('parent.studyTime')}</div>
+                                    <div className="text-lg font-semibold" style={{color: '#333333'}}>{t('parent.thisWeek')}</div>
+                                    <div style={{color: '#757575'}}>{t('parent.studyTime')}</div>
                                 </div>
                             </div>
                         </div>
 
                         {/* Recent Performance */}
-                        <div className="bg-white rounded-lg shadow-sm p-6">
-                            <h2 className="text-2xl font-bold text-gray-900 mb-6">📝 {t('parent.recentTestScores')}</h2>
+                        <div className="bg-white shadow-sm p-6" style={{borderRadius: '8px'}}>
+                            <h2 className="text-2xl font-bold mb-6" style={{color: '#333333'}}>📝 {t('parent.recentTestScores')}</h2>
                             <div className="flex justify-center">
                                 <div className="flex space-x-4">
                                     {childData.recentScores.map((score, index) => (
                                         <div key={index} className="text-center">
-                                            <div className={`w-16 h-16 rounded-full flex items-center justify-center text-white font-bold text-lg ${
-                                                score >= 90 ? 'bg-green-500' : score >= 80 ? 'bg-blue-500' : 'bg-yellow-500'
-                                            }`}>
+                                            <div className={`w-16 h-16 rounded-full flex items-center justify-center text-white font-bold text-lg`} style={{
+                                                backgroundColor: score >= 90 ? '#4CAF50' : score >= 80 ? '#0055A4' : '#FDD835'
+                                            }}>
                                                 {score}
                                             </div>
-                                            <div className="text-sm text-gray-600 mt-2">Test {index + 1}</div>
+                                            <div className="text-sm mt-2" style={{color: '#757575'}}>Test {index + 1}</div>
                                         </div>
                                     ))}
                                 </div>
@@ -218,35 +225,36 @@ const ParentsDashboard = () => {
 
                 {/* Subjects Tab */}
                 {activeTab === 'subjects' && (
-                    <div className="bg-white rounded-lg shadow-sm p-6">
-                        <h2 className="text-2xl font-bold text-gray-900 mb-6">📚 {t('parent.subjectPerformance')}</h2>
+                    <div className="bg-white shadow-sm p-6" style={{borderRadius: '8px'}}>
+                        <h2 className="text-2xl font-bold mb-6" style={{color: '#333333'}}>📚 {t('parent.subjectPerformance')}</h2>
                         <div className="space-y-4">
                             {childData.subjects.map((subject, index) => (
-                                <div key={index} className="border border-gray-200 rounded-lg p-4">
+                                <div key={index} className="border border-gray-200 p-4" style={{borderRadius: '8px'}}>
                                     <div className="flex items-center justify-between mb-3">
                                         <div>
-                                            <h3 className="text-xl font-semibold text-gray-900">{subject.name}</h3>
-                                            <p className="text-gray-600">{t('parent.teacherLabel')}: {subject.teacher}</p>
+                                            <h3 className="text-xl font-semibold" style={{color: '#333333'}}>{subject.name}</h3>
+                                            <p style={{color: '#757575'}}>{t('parent.teacherLabel')}: {subject.teacher}</p>
                                         </div>
                                         <div className="text-right">
-                                            <div className={`text-2xl font-bold ${
-                                                subject.grade.startsWith('A') ? 'text-green-600' : 
-                                                subject.grade.startsWith('B') ? 'text-blue-600' : 'text-yellow-600'
-                                            }`}>
+                                            <div className={`text-2xl font-bold`} style={{
+                                                color: subject.grade.startsWith('A') ? '#4CAF50' : 
+                                                       subject.grade.startsWith('B') ? '#0077B6' : '#FDD835'
+                                            }}>
                                                 {subject.grade}
                                             </div>
                                         </div>
                                     </div>
                                     <div className="w-full bg-gray-200 rounded-full h-4">
                                         <div 
-                                            className={`h-4 rounded-full ${
-                                                subject.progress >= 80 ? 'bg-green-500' : 
-                                                subject.progress >= 60 ? 'bg-blue-500' : 'bg-yellow-500'
-                                            }`}
-                                            style={{ width: `${subject.progress}%` }}
+                                            className={`h-4 rounded-full`}
+                                            style={{
+                                                width: `${subject.progress}%`,
+                                                backgroundColor: subject.progress >= 80 ? '#4CAF50' : 
+                                                                subject.progress >= 60 ? '#0055A4' : '#FDD835'
+                                            }}
                                         ></div>
                                     </div>
-                                    <div className="text-right text-lg font-semibold text-gray-700 mt-2">
+                                    <div className="text-right text-lg font-semibold mt-2" style={{color: '#333333'}}>
                                         {subject.progress}% {t('parent.completeWord')}
                                     </div>
                                 </div>
@@ -257,20 +265,20 @@ const ParentsDashboard = () => {
 
                 {/* Achievements Tab */}
                 {activeTab === 'achievements' && (
-                    <div className="bg-white rounded-lg shadow-sm p-6">
-                        <h2 className="text-2xl font-bold text-gray-900 mb-6">🏆 {t('parent.recentAchievements')}</h2>
+                    <div className="bg-white shadow-sm p-6" style={{borderRadius: '8px'}}>
+                        <h2 className="text-2xl font-bold mb-6" style={{color: '#333333'}}>🏆 {t('parent.recentAchievements')}</h2>
                         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
                             {childData.achievements.map((achievement, index) => (
-                                <div key={index} className="text-center border border-gray-200 rounded-lg p-6">
+                                <div key={index} className="text-center border border-gray-200 p-6" style={{borderRadius: '8px'}}>
                                     <div className="text-5xl mb-3">{achievement.icon}</div>
-                                    <h3 className="text-xl font-semibold text-gray-900 mb-2">{achievement.name}</h3>
-                                    <p className="text-gray-600">{t('parent.earnedOn', { date: achievement.date })}</p>
+                                    <h3 className="text-xl font-semibold mb-2" style={{color: '#333333'}}>{achievement.name}</h3>
+                                    <p style={{color: '#757575'}}>{t('parent.earnedOn', { date: achievement.date })}</p>
                                 </div>
                             ))}
                         </div>
                         <div className="mt-8 text-center">
-                            <div className="inline-block bg-blue-100 rounded-lg p-4">
-                                <div className="text-lg font-semibold text-blue-900">
+                            <div className="inline-block p-4" style={{backgroundColor: '#E3F2FD', borderRadius: '8px'}}>
+                                <div className="text-lg font-semibold" style={{color: '#0055A4'}}>
                                     🎉 {t('parent.earnedCount', { count: childData.achievements.length })}
                                 </div>
                             </div>
@@ -280,16 +288,19 @@ const ParentsDashboard = () => {
 
                 {/* Activity Tab */}
                 {activeTab === 'activity' && (
-                    <div className="bg-white rounded-lg shadow-sm p-6">
-                        <h2 className="text-2xl font-bold text-gray-900 mb-6">⏰ {t('parent.weeklyStudyTime')}</h2>
+                    <div className="bg-white shadow-sm p-6" style={{borderRadius: '8px'}}>
+                        <h2 className="text-2xl font-bold mb-6" style={{color: '#333333'}}>⏰ {t('parent.weeklyStudyTime')}</h2>
                         <div className="space-y-4">
                             {childData.weeklyActivity.map((day, index) => (
                                 <div key={index} className="flex items-center space-x-4">
-                                    <div className="w-16 text-lg font-semibold text-gray-700">{day.day}</div>
+                                    <div className="w-16 text-lg font-semibold" style={{color: '#333333'}}>{day.day}</div>
                                     <div className="flex-1 bg-gray-200 rounded-full h-6 relative">
                                         <div 
-                                            className="bg-blue-500 h-6 rounded-full flex items-center justify-end pr-2"
-                                            style={{ width: `${Math.min(day.minutes / 90 * 100, 100)}%` }}
+                                            className="h-6 rounded-full flex items-center justify-end pr-2"
+                                            style={{ 
+                                                width: `${Math.min(day.minutes / 90 * 100, 100)}%`,
+                                                backgroundColor: '#0055A4'
+                                            }}
                                         >
                                             <span className="text-white text-sm font-semibold">{day.minutes}m</span>
                                         </div>
@@ -297,12 +308,12 @@ const ParentsDashboard = () => {
                                 </div>
                             ))}
                         </div>
-                        <div className="mt-6 bg-green-50 border border-green-200 rounded-lg p-4">
+                        <div className="mt-6 border p-4" style={{backgroundColor: '#E8F5E9', borderColor: '#C8E6C9', borderRadius: '8px'}}>
                             <div className="text-center">
-                                <div className="text-lg font-semibold text-green-800">
+                                <div className="text-lg font-semibold" style={{color: '#4CAF50'}}>
                                     ✅ {t('parent.totalThisWeek', { minutes: childData.weeklyActivity.reduce((sum, day) => sum + day.minutes, 0) })}
                                 </div>
-                                <div className="text-green-600 mt-1">{t('parent.consistencyMsg')}</div>
+                                <div className="mt-1" style={{color: '#4CAF50'}}>{t('parent.consistencyMsg')}</div>
                             </div>
                         </div>
                     </div>
@@ -312,106 +323,106 @@ const ParentsDashboard = () => {
                 {activeTab === 'ranking' && (
                     <div className="space-y-6">
                         {/* Overall Class Position */}
-                        <div className="bg-white rounded-lg shadow-sm p-6">
-                            <h2 className="text-2xl font-bold text-gray-900 mb-6">🎯 {t('parent.classPositionTitle')}</h2>
+                        <div className="bg-white shadow-sm p-6" style={{borderRadius: '8px'}}>
+                            <h2 className="text-2xl font-bold mb-6" style={{color: '#333333'}}>🎯 {t('parent.classPositionTitle')}</h2>
                             <div className="text-center">
-                                <div className="inline-block bg-blue-100 rounded-full p-8 mb-4">
-                                    <div className="text-4xl font-bold text-blue-600">3rd</div>
+                                <div className="inline-block rounded-full p-8 mb-4" style={{backgroundColor: '#E3F2FD'}}>
+                                    <div className="text-4xl font-bold" style={{color: '#0055A4'}}>3rd</div>
                                 </div>
-                                <div className="text-xl font-semibold text-gray-900 mb-2">
+                                <div className="text-xl font-semibold mb-2" style={{color: '#333333'}}>
                                     {t('parent.rankOutOf', { rank: 3, total: 35 })}
                                 </div>
-                                <div className="text-gray-600">{t('parent.topPercent', { percent: 9 })} 🌟</div>
+                                <div style={{color: '#757575'}}>{t('parent.topPercent', { percent: 9 })} 🌟</div>
                             </div>
                         </div>
 
                         {/* Subject Rankings */}
-                        <div className="bg-white rounded-lg shadow-sm p-6">
-                            <h2 className="text-2xl font-bold text-gray-900 mb-6">📊 {t('parent.subjectWiseRankings')}</h2>
+                        <div className="bg-white shadow-sm p-6" style={{borderRadius: '8px'}}>
+                            <h2 className="text-2xl font-bold mb-6" style={{color: '#333333'}}>📊 {t('parent.subjectWiseRankings')}</h2>
                             <div className="space-y-4">
-                                <div className="flex items-center justify-between p-4 bg-yellow-50 border border-yellow-200 rounded-lg">
+                                <div className="flex items-center justify-between p-4 border" style={{backgroundColor: '#FFF9C4', borderColor: '#FDD835', borderRadius: '8px'}}>
                                     <div className="flex items-center space-x-3">
                                         <div className="text-2xl">🥇</div>
                                         <div>
-                                            <div className="font-bold text-gray-900">Mathematics</div>
-                                            <div className="text-sm text-gray-600">{t('parent.doingExcellent')}</div>
+                                            <div className="font-bold" style={{color: '#333333'}}>Mathematics</div>
+                                            <div className="text-sm" style={{color: '#757575'}}>{t('parent.doingExcellent')}</div>
                                         </div>
                                     </div>
                                     <div className="text-right">
-                                        <div className="text-xl font-bold text-yellow-600">1st</div>
-                                        <div className="text-sm text-gray-600">{t('parent.outOfTotal', { total: 35 })}</div>
+                                        <div className="text-xl font-bold" style={{color: '#F57F17'}}>1st</div>
+                                        <div className="text-sm" style={{color: '#757575'}}>{t('parent.outOfTotal', { total: 35 })}</div>
                                     </div>
                                 </div>
 
-                                <div className="flex items-center justify-between p-4 bg-gray-50 border border-gray-200 rounded-lg">
+                                <div className="flex items-center justify-between p-4 bg-gray-50 border border-gray-200" style={{borderRadius: '8px'}}>
                                     <div className="flex items-center space-x-3">
                                         <div className="text-2xl">🥈</div>
                                         <div>
-                                            <div className="font-bold text-gray-900">Physics</div>
-                                            <div className="text-sm text-gray-600">{t('parent.veryGoodPerformance')}</div>
+                                            <div className="font-bold" style={{color: '#333333'}}>Physics</div>
+                                            <div className="text-sm" style={{color: '#757575'}}>{t('parent.veryGoodPerformance')}</div>
                                         </div>
                                     </div>
                                     <div className="text-right">
-                                        <div className="text-xl font-bold text-gray-600">5th</div>
-                                        <div className="text-sm text-gray-600">{t('parent.outOfTotal', { total: 28 })}</div>
+                                        <div className="text-xl font-bold" style={{color: '#757575'}}>5th</div>
+                                        <div className="text-sm" style={{color: '#757575'}}>{t('parent.outOfTotal', { total: 28 })}</div>
                                     </div>
                                 </div>
 
-                                <div className="flex items-center justify-between p-4 bg-orange-50 border border-orange-200 rounded-lg">
+                                <div className="flex items-center justify-between p-4 border" style={{backgroundColor: '#FFE0B2', borderColor: '#FFB74D', borderRadius: '8px'}}>
                                     <div className="flex items-center space-x-3">
                                         <div className="text-2xl">🥉</div>
                                         <div>
-                                            <div className="font-bold text-gray-900">Chemistry</div>
-                                            <div className="text-sm text-gray-600">{t('parent.goodProgress')}</div>
+                                            <div className="font-bold" style={{color: '#333333'}}>Chemistry</div>
+                                            <div className="text-sm" style={{color: '#757575'}}>{t('parent.goodProgress')}</div>
                                         </div>
                                     </div>
                                     <div className="text-right">
-                                        <div className="text-xl font-bold text-orange-600">8th</div>
-                                        <div className="text-sm text-gray-600">{t('parent.outOfTotal', { total: 22 })}</div>
+                                        <div className="text-xl font-bold" style={{color: '#FF9800'}}>8th</div>
+                                        <div className="text-sm" style={{color: '#757575'}}>{t('parent.outOfTotal', { total: 22 })}</div>
                                     </div>
                                 </div>
 
-                                <div className="flex items-center justify-between p-4 bg-blue-50 border border-blue-200 rounded-lg">
+                                <div className="flex items-center justify-between p-4 border" style={{backgroundColor: '#E3F2FD', borderColor: '#90CAF9', borderRadius: '8px'}}>
                                     <div className="flex items-center space-x-3">
                                         <div className="text-2xl">📈</div>
                                         <div>
-                                            <div className="font-bold text-gray-900">Biology</div>
-                                            <div className="text-sm text-gray-600">{t('parent.roomForImprovement')}</div>
+                                            <div className="font-bold" style={{color: '#333333'}}>Biology</div>
+                                            <div className="text-sm" style={{color: '#757575'}}>{t('parent.roomForImprovement')}</div>
                                         </div>
                                     </div>
                                     <div className="text-right">
-                                        <div className="text-xl font-bold text-blue-600">12th</div>
-                                        <div className="text-sm text-gray-600">{t('parent.outOfTotal', { total: 30 })}</div>
+                                        <div className="text-xl font-bold" style={{color: '#0077B6'}}>12th</div>
+                                        <div className="text-sm" style={{color: '#757575'}}>{t('parent.outOfTotal', { total: 30 })}</div>
                                     </div>
                                 </div>
                             </div>
                         </div>
 
                         {/* Progress Trends */}
-                        <div className="bg-white rounded-lg shadow-sm p-6">
-                            <h2 className="text-2xl font-bold text-gray-900 mb-6">📈 {t('parent.progressTrends')}</h2>
+                        <div className="bg-white shadow-sm p-6" style={{borderRadius: '8px'}}>
+                            <h2 className="text-2xl font-bold mb-6" style={{color: '#333333'}}>📈 {t('parent.progressTrends')}</h2>
                             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                                <div className="text-center p-4 bg-green-50 rounded-lg">
+                                <div className="text-center p-4" style={{backgroundColor: '#E8F5E9', borderRadius: '8px'}}>
                                     <div className="text-3xl mb-2">⬆️</div>
-                                    <div className="text-xl font-bold text-green-600">{t('parent.plusPositions', { count: 2 })}</div>
-                                    <div className="text-gray-600">{t('parent.thisMonth')}</div>
+                                    <div className="text-xl font-bold" style={{color: '#4CAF50'}}>{t('parent.plusPositions', { count: 2 })}</div>
+                                    <div style={{color: '#757575'}}>{t('parent.thisMonth')}</div>
                                 </div>
-                                <div className="text-center p-4 bg-purple-50 rounded-lg">
+                                <div className="text-center p-4" style={{backgroundColor: '#F3E5F5', borderRadius: '8px'}}>
                                     <div className="text-3xl mb-2">🎯</div>
-                                    <div className="text-xl font-bold text-purple-600">{t('parent.consistent')}</div>
-                                    <div className="text-gray-600">{t('parent.studyPattern')}</div>
+                                    <div className="text-xl font-bold" style={{color: '#673AB7'}}>{t('parent.consistent')}</div>
+                                    <div style={{color: '#757575'}}>{t('parent.studyPattern')}</div>
                                 </div>
                             </div>
                         </div>
 
                         {/* Encouragement Message */}
-                        <div className="bg-gradient-to-r from-blue-50 to-purple-50 rounded-lg p-6 border border-blue-200">
+                        <div className="p-6 border" style={{background: 'linear-gradient(to right, #E3F2FD, #F3E5F5)', borderRadius: '8px', borderColor: '#90CAF9'}}>
                             <div className="text-center">
                                 <div className="text-4xl mb-4">🌟</div>
-                                <div className="text-xl font-bold text-gray-900 mb-2">
+                                <div className="text-xl font-bold mb-2" style={{color: '#333333'}}>
                                     {t('parent.encouragementTitle')}
                                 </div>
-                                <div className="text-gray-600">
+                                <div style={{color: '#757575'}}>
                                     {t('parent.encouragementBody', { name: childData.name.split(' ')[0] })}
                                 </div>
                             </div>
