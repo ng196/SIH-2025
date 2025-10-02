@@ -11,9 +11,8 @@
 
 import { useState } from 'react';
 
-const Login = ({ onLoginSuccess }) => {
+const Login = ({ onLoginSuccess, onSkipLogin }) => {
     const [currentStep, setCurrentStep] = useState('welcome');
-    const [loginMethod, setLoginMethod] = useState('');
     const [userType, setUserType] = useState('');
     const [credentials, setCredentials] = useState({
         email: '',
@@ -31,7 +30,6 @@ const Login = ({ onLoginSuccess }) => {
     };
 
     const handleMethodSelect = (method) => {
-        setLoginMethod(method);
         setError('');
 
         if (method === 'gmail') {
@@ -163,6 +161,19 @@ const Login = ({ onLoginSuccess }) => {
                     <span className="text-2xl">🏫</span>
                     <span className="font-semibold">School ID Login</span>
                 </button>
+            </div>
+
+            {/* Skip Login Option */}
+            <div className="mt-6">
+                <button
+                    onClick={onSkipLogin}
+                    className="w-full p-3 bg-gray-600 text-gray-300 rounded-lg hover:bg-gray-500 transition-all"
+                >
+                    Continue as Guest
+                </button>
+                <p className="text-xs text-gray-400 mt-2">
+                    You can always log in later from settings
+                </p>
             </div>
         </div>
     );
