@@ -1,8 +1,6 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans:wght@300;400;500;600&family=Noto+Sans+Devanagari:wght@300;400;500;600&display=swap');
 /* Tailwind v4: use the single entry import */
 @import "tailwindcss";
-
-/* Import Noto Sans Font for SANGYAAN Design Theme */
-@import url('https://fonts.googleapis.com/css2?family=Noto+Sans:wght@300;400;500;600&family=Noto+Sans+Devanagari:wght@300;400;500;600&display=swap');
 
 /* SANGYAAN Design Theme Variables */
 :root {

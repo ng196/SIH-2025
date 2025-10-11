@@ -1,5 +1,5 @@
-import { useState, useEffect } from 'react';
-import { LanguageProvider, useLanguage } from './contexts/LanguageContext';
+import { useState } from 'react';
+import { LanguageProvider } from './contexts/LanguageContext';
 import { AuthProvider, useAuth } from './contexts/AuthContext';
 import Homepage from './components/Homepage';
 import Classroom from './components/Classroom';
@@ -14,31 +14,19 @@ import Login from './components/Login';
 
 const AppContent = () => {
   const [currentPage, setCurrentPage] = useState('homepage');
-  const { t } = useLanguage();
-  const { isAuthenticated, signIn } = useAuth();
-  const [showLogin, setShowLogin] = useState(false);
-
-  // Update showLogin when authentication state changes
-  useEffect(() => {
-    setShowLogin(!isAuthenticated);
-  }, [isAuthenticated]);
+  const { user } = useAuth();
 
   const navigate = (page) => {
     setCurrentPage(page);
   };
 
-  const handleLoginSuccess = (loginData) => {
-    signIn(loginData);
-    setShowLogin(false);
+  const handleLoginSuccess = () => {
+    // The AuthProvider now handles the user state, so we just need to re-render.
+    // This function can be used for any post-login logic if needed.
   };
 
-  const handleSkipLogin = () => {
-    setShowLogin(false);
-  };
-
-  // Show login screen if not authenticated and not skipped
-  if (showLogin) {
-    return <Login onLoginSuccess={handleLoginSuccess} onSkipLogin={handleSkipLogin} />;
+  if (!user) {
+    return <Login onLoginSuccess={handleLoginSuccess} />;
   }
 
   const renderPage = () => {
@@ -68,12 +56,9 @@ const AppContent = () => {
 
   return (
     <div className="app">
-      {/* Main Content */}
       <div className="pb-20">
         {renderPage()}
       </div>
-
-      {/* Bottom Navigation */}
       <nav className="fixed bottom-0 left-0 right-0 theme-card border-t border-gray-200 px-4 py-2 z-50">
         <div className="max-w-lg mx-auto">
           <div className="flex justify-around">
@@ -91,7 +76,7 @@ const AppContent = () => {
                 }`}
             >
               <span className="text-xl mb-1">🏠</span>
-              <span className="text-xs font-medium">{t('home')}</span>
+              <span className="text-xs font-medium">Home</span>
             </button>
 
             <button
@@ -100,7 +85,7 @@ const AppContent = () => {
                 }`}
             >
               <span className="text-xl mb-1">📚</span>
-              <span className="text-xs font-medium">{t('learn')}</span>
+              <span className="text-xs font-medium">Learn</span>
             </button>
 
             <button
@@ -109,7 +94,7 @@ const AppContent = () => {
                 }`}
             >
               <span className="text-xl mb-1">🧪</span>
-              <span className="text-xs font-medium">{t('labs')}</span>
+              <span className="text-xs font-medium">Labs</span>
             </button>
 
             <button
@@ -118,7 +103,7 @@ const AppContent = () => {
                 }`}
             >
               <span className="text-xl mb-1">🏆</span>
-              <span className="text-xs font-medium">{t('ranks')}</span>
+              <span className="text-xs font-medium">Ranks</span>
             </button>
 
             <button
@@ -127,7 +112,7 @@ const AppContent = () => {
                 }`}
             >
               <span className="text-xl mb-1">🏫</span>
-              <span className="text-xs font-medium">{t('class')}</span>
+              <span className="text-xs font-medium">Class</span>
             </button>
 
             <button
@@ -136,7 +121,7 @@ const AppContent = () => {
                 }`}
             >
               <span className="text-xl mb-1">📅</span>
-              <span className="text-xs font-medium">{t('events')}</span>
+              <span className="text-xs font-medium">Events</span>
             </button>
 
             <button
@@ -159,8 +144,6 @@ const AppContent = () => {
           </div>
         </div>
       </nav>
-
-      {/* Bottom padding to account for fixed navigation */}
       <div className="h-20"></div>
     </div>
   );
