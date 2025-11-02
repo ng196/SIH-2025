@@ -21,7 +21,7 @@ const Settings = ({
   const pfpList = Array.from({ length: 20 }, (_, i) => `/files/icons/pfp/${i + 1}.png`);
 
   return (
-    <div className="absolute right-0 top-16 w-96 theme-card rounded-3xl shadow-2xl p-6 z-50">
+    <div className="absolute right-0 top-16 w-96 max-w-[calc(100vw-2rem)] theme-card rounded-3xl shadow-2xl p-6 z-50 mx-4 sm:mx-0">
       <h2 className="text-xl font-bold mb-4">⚙️ {t("settings")}</h2>
 
       {/* Language Selector */}

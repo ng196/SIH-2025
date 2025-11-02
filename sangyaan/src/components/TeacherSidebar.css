@@ -167,12 +167,92 @@
 
 /* Responsive Design */
 @media (max-width: 768px) {
+  /* Mobile hamburger menu button */
+  .mobile-menu-btn {
+    position: fixed;
+    top: 1rem;
+    left: 1rem;
+    z-index: 1100;
+    background: white;
+    border: none;
+    border-radius: 8px;
+    padding: 0.75rem;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+
+  .mobile-menu-btn:hover {
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  }
+
+  .mobile-menu-btn:active {
+    transform: scale(0.95);
+  }
+
+  /* Hamburger icon - 3 lines */
+  .hamburger-icon {
+    width: 24px;
+    height: 18px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+
+  .hamburger-icon span {
+    display: block;
+    height: 3px;
+    width: 100%;
+    background: #4f46e5;
+    border-radius: 2px;
+    transition: all 0.3s ease;
+  }
+
+  /* Mobile overlay - darkens background when menu is open */
+  .mobile-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 999;
+    animation: fadeIn 0.3s ease;
+  }
+
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+
+  /* Hide sidebar by default on mobile */
   .teacher-sidebar {
-    width: 80px;
+    transform: translateX(-100%);
+    width: 280px;
+    z-index: 1001;
   }
   
+  /* Show sidebar when mobile menu is open */
+  .teacher-sidebar.mobile-open {
+    transform: translateX(0);
+  }
+
+  /* Remove collapsed state on mobile - always full width when open */
   .teacher-sidebar.collapsed {
-    width: 0;
-    overflow: hidden;
+    width: 280px;
+    transform: translateX(-100%);
+  }
+
+  .teacher-sidebar.collapsed.mobile-open {
+    transform: translateX(0);
+  }
+
+  /* Hide desktop toggle button on mobile */
+  .teacher-sidebar .toggle-btn {
+    display: none;
   }
 }
