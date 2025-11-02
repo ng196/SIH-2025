@@ -220,7 +220,7 @@ const Profile = ({
 
             {/* Profile Dropdown */}
             {showProfile && (
-                <div className="absolute right-0 top-16 w-80 theme-card rounded-3xl shadow-2xl p-6 z-50">
+                <div className="absolute right-0 top-16 w-80 max-w-[calc(100vw-2rem)] theme-card rounded-3xl shadow-2xl p-6 z-50 mx-4 sm:mx-0">
                     {isLoading ? (
                         <div className="text-center py-8">
                             <div className="animate-spin w-8 h-8 border-2 border-blue-500 border-t-transparent rounded-full mx-auto mb-2"></div>
