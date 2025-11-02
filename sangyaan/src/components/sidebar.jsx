@@ -31,6 +31,7 @@ const TeacherSidebar = ({ activeTab, onTabChange, isCollapsed, onToggle }) => {
     ];
 
     const [expandedGroups, setExpandedGroups] = React.useState([]);
+    const [isMobileMenuOpen, setIsMobileMenuOpen] = React.useState(false);
 
     const handleGroupToggle = (groupId) => {
         setExpandedGroups(prev =>
@@ -40,10 +41,45 @@ const TeacherSidebar = ({ activeTab, onTabChange, isCollapsed, onToggle }) => {
         );
     };
 
+    const handleMobileMenuToggle = () => {
+        setIsMobileMenuOpen(!isMobileMenuOpen);
+    };
+
+    const handleNavItemClick = (itemId) => {
+        onTabChange(itemId);
+        // Close mobile menu after selection
+        if (window.innerWidth <= 768) {
+            setIsMobileMenuOpen(false);
+        }
+    };
+
     const { currentLanguage, changeLanguage, availableLanguages } = useLanguage();
 
     return (
-        <div className={`teacher-sidebar ${isCollapsed ? 'collapsed' : ''}`}>
+        <>
+            {/* Mobile Hamburger Menu Button - Only visible on small screens */}
+            <button 
+                className="mobile-menu-btn md:hidden"
+                onClick={handleMobileMenuToggle}
+                aria-label="Toggle navigation menu"
+            >
+                <div className="hamburger-icon">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </button>
+
+            {/* Mobile Overlay - Only visible when menu is open on small screens */}
+            {isMobileMenuOpen && (
+                <div 
+                    className="mobile-overlay md:hidden"
+                    onClick={handleMobileMenuToggle}
+                />
+            )}
+
+            {/* Sidebar */}
+            <div className={`teacher-sidebar ${isCollapsed ? 'collapsed' : ''} ${isMobileMenuOpen ? 'mobile-open' : ''}`}>
             <div className="sidebar-header">
                 <div className="brand">
                     <span className="brand-icon">🎓</span>
@@ -92,7 +128,7 @@ const TeacherSidebar = ({ activeTab, onTabChange, isCollapsed, onToggle }) => {
                         ) : (
                             <button
                                 className={`nav-item ${activeTab === item.id ? 'active' : ''}`}
-                                onClick={() => onTabChange(item.id)}
+                                onClick={() => handleNavItemClick(item.id)}
                                 title={isCollapsed ? item.name : ''}
                             >
                                 <span className="nav-icon">{item.icon}</span>
@@ -132,6 +168,7 @@ const TeacherSidebar = ({ activeTab, onTabChange, isCollapsed, onToggle }) => {
                 </div>
             </div>
         </div>
+        </>
     );
 };
 
