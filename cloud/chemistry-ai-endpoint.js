@@ -1,7 +1,11 @@
 // Chemistry AI Endpoint for STEM Quest
 // This can be deployed as a serverless function or API endpoint
 
-const GEMINI_API_KEY = process.env.GEMINI_API_KEY || 'YOUR_API_KEY_HERE';
+const GEMINI_API_KEY = process.env.GEMINI_API_KEY || process.env.VITE_GEMINI_API_KEY || 'YOUR_API_KEY_HERE';
+
+if (GEMINI_API_KEY === 'YOUR_API_KEY_HERE') {
+  console.warn('⚠️ Gemini API key not configured. Please set GEMINI_API_KEY or VITE_GEMINI_API_KEY environment variable');
+}
 
 async function predictChemicalReaction(reactant1, reactant2) {
   const prompt = `As a chemistry expert, predict the reaction between ${reactant1} and ${reactant2}. 

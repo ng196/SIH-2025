@@ -105,19 +105,19 @@ const ParentsDashboard = () => {
         <div className="min-h-screen" style={{backgroundColor: '#F5F5F5'}}>
             {/* Header */}
             <div className="bg-white shadow-sm">
-                <div className="max-w-6xl mx-auto px-4 py-6">
-                    <div className="flex items-center justify-between">
-                        <div className="flex items-center space-x-4">
-                            <div className="w-16 h-16 rounded-full flex items-center justify-center text-3xl" style={{backgroundColor: '#E3F2FD'}}>
+                <div className="max-w-6xl mx-auto px-4 md:px-6 py-4 md:py-6">
+                    <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+                        <div className="flex items-center space-x-3 md:space-x-4">
+                            <div className="w-12 h-12 md:w-16 md:h-16 rounded-full flex items-center justify-center text-2xl md:text-3xl" style={{backgroundColor: '#E3F2FD'}}>
                                 {childData.avatar}
                             </div>
                             <div>
-                                <h1 className="text-2xl font-bold" style={{color: '#333333'}}>{childData.name}</h1>
-                                <p className="text-lg" style={{color: '#757575'}}>{childData.grade} • {t('parent.currentLevel')} {childData.currentLevel}</p>
+                                <h1 className="text-xl md:text-2xl font-bold" style={{color: '#333333'}}>{childData.name}</h1>
+                                <p className="text-base md:text-lg" style={{color: '#757575'}}>{childData.grade} • {t('parent.currentLevel')} {childData.currentLevel}</p>
                             </div>
                         </div>
-                        <div className="text-right">
-                            <div className="flex items-center justify-end space-x-2 mb-2">
+                        <div className="text-left sm:text-right w-full sm:w-auto">
+                            <div className="flex items-center justify-start sm:justify-end space-x-2 mb-2">
                                 <button
                                     onClick={() => changeLanguage('en')}
                                     className={`px-2 py-1 rounded text-xs ${currentLanguage === 'en' ? 'text-white' : 'bg-gray-100'}`}
@@ -137,10 +137,9 @@ const ParentsDashboard = () => {
             </div>
 
             {/* Navigation Tabs */}
-            <div className="max-w-6xl mx-auto px-4 mt-6">
+            <div className="max-w-6xl mx-auto px-4 md:px-6 mt-4 md:mt-6">
                 <div className="bg-white shadow-sm p-2" style={{borderRadius: '8px'}}>
-                    <div className="flex space-x-2">
-                        {[
+                    <div className="flex overflow-x-auto space-x-1 md:space-x-2 scrollbar-hide">{[
                             { id: 'overview', name: t('parent.tabsOverview'), icon: '📊' },
                             { id: 'subjects', name: t('parent.tabsSubjects'), icon: '📚' },
                             { id: 'achievements', name: t('parent.tabsAchievements'), icon: '🏆' },
@@ -150,7 +149,7 @@ const ParentsDashboard = () => {
                             <button
                                 key={tab.id}
                                 onClick={() => setActiveTab(tab.id)}
-                                className={`flex items-center space-x-2 px-6 py-3 font-medium transition-colors ${
+                                className={`flex items-center space-x-1 md:space-x-2 px-3 md:px-6 py-2 md:py-3 font-medium transition-colors whitespace-nowrap flex-shrink-0 ${
                                     activeTab === tab.id
                                         ? 'text-white'
                                         : 'hover:bg-gray-100'
@@ -158,11 +157,12 @@ const ParentsDashboard = () => {
                                 style={{
                                     borderRadius: '8px',
                                     backgroundColor: activeTab === tab.id ? '#0055A4' : 'transparent',
-                                    color: activeTab === tab.id ? '#FFFFFF' : '#757575'
+                                    color: activeTab === tab.id ? '#FFFFFF' : '#757575',
+                                    fontSize: 'clamp(0.75rem, 2vw, 1rem)'
                                 }}
                             >
-                                <span className="text-xl">{tab.icon}</span>
-                                <span className="text-lg">{tab.name}</span>
+                                <span className="text-base md:text-xl">{tab.icon}</span>
+                                <span className="text-sm md:text-lg">{tab.name}</span>
                             </button>
                         ))}
                     </div>
@@ -170,14 +170,14 @@ const ParentsDashboard = () => {
             </div>
 
             {/* Content */}
-            <div className="max-w-6xl mx-auto px-4 mt-6 pb-8">
+            <div className="max-w-6xl mx-auto px-4 md:px-6 mt-4 md:mt-6 pb-6 md:pb-8">
                 {/* Overview Tab */}
                 {activeTab === 'overview' && (
-                    <div className="space-y-6">
+                    <div className="space-y-4 md:space-y-6">
                         {/* Progress Summary */}
-                        <div className="bg-white shadow-sm p-6" style={{borderRadius: '8px'}}>
-                            <h2 className="text-2xl font-bold mb-6" style={{color: '#333333'}}>📈 {t('parent.overallProgress')}</h2>
-                            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+                        <div className="bg-white shadow-sm p-4 md:p-6" style={{borderRadius: '8px'}}>
+                            <h2 className="text-xl md:text-2xl font-bold mb-4 md:mb-6" style={{color: '#333333'}}>📈 {t('parent.overallProgress')}</h2>
+                            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 md:gap-6">
                                 <div className="text-center">
                                     <div className="w-24 h-24 mx-auto rounded-full flex items-center justify-center mb-3" style={{backgroundColor: '#E8F5E9'}}>
                                         <div className="text-3xl font-bold" style={{color: '#4CAF50'}}>{childData.overallProgress}%</div>

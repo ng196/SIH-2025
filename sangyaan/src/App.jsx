@@ -47,99 +47,96 @@ const AppContent = () => {
   return (
     <div className="app">
       {/* Main Content */}
-      <div className="pb-20">
+      <div className="pb-20 md:pb-24">
         {renderPage()}
       </div>
 
-      {/* Bottom Navigation */}
-      <nav className="fixed bottom-0 left-0 right-0 theme-card border-t border-gray-200 px-4 py-2 z-50">
-        <div className="max-w-lg mx-auto">
-          <div className="flex justify-around">
+      {/* Bottom Navigation - Sticky with horizontal scroll on mobile */}
+      <nav className="fixed bottom-0 left-0 right-0 theme-card border-t border-gray-200 z-50 bg-white shadow-lg" style={{ paddingBottom: 'env(safe-area-inset-bottom)' }}>
+        <div className="w-full overflow-x-auto scrollbar-hide">
+          <div className="flex justify-start md:justify-around items-center min-w-max md:min-w-0 px-2 py-2 gap-1">
             <button
               onClick={() => navigate('arena')}
-              className={`flex flex-col items-center p-2 rounded-lg transition ${currentPage === 'arena' ? 'theme-primary text-white' : 'text-gray-600 hover:text-gray-800'
+              className={`flex flex-col items-center px-2 py-2 rounded-lg transition flex-shrink-0 min-w-[60px] ${currentPage === 'arena' ? 'theme-primary text-white' : 'text-gray-600 hover:text-gray-800'
                 }`}
             >
-              <span className="text-xl mb-1">🎮</span>
-              <span className="text-xs font-medium">Arena</span>
+              <span className="text-lg md:text-xl mb-1">🎮</span>
+              <span className="text-[10px] md:text-xs font-medium whitespace-nowrap">Arena</span>
             </button>
             <button
               onClick={() => navigate('homepage')}
-              className={`flex flex-col items-center p-2 rounded-lg transition ${currentPage === 'homepage' ? 'theme-primary text-white' : 'text-gray-600 hover:text-gray-800'
+              className={`flex flex-col items-center px-2 py-2 rounded-lg transition flex-shrink-0 min-w-[60px] ${currentPage === 'homepage' ? 'theme-primary text-white' : 'text-gray-600 hover:text-gray-800'
                 }`}
             >
-              <span className="text-xl mb-1">🏠</span>
-              <span className="text-xs font-medium">{t('home')}</span>
+              <span className="text-lg md:text-xl mb-1">🏠</span>
+              <span className="text-[10px] md:text-xs font-medium whitespace-nowrap">{t('home')}</span>
             </button>
 
             <button
               onClick={() => navigate('learn')}
-              className={`flex flex-col items-center p-2 rounded-lg transition ${currentPage === 'learn' ? 'theme-primary text-white' : 'text-gray-600 hover:text-gray-800'
+              className={`flex flex-col items-center px-2 py-2 rounded-lg transition flex-shrink-0 min-w-[60px] ${currentPage === 'learn' ? 'theme-primary text-white' : 'text-gray-600 hover:text-gray-800'
                 }`}
             >
-              <span className="text-xl mb-1">📚</span>
-              <span className="text-xs font-medium">{t('learn')}</span>
+              <span className="text-lg md:text-xl mb-1">📚</span>
+              <span className="text-[10px] md:text-xs font-medium whitespace-nowrap">{t('learn')}</span>
             </button>
 
             <button
               onClick={() => navigate('virtuallab')}
-              className={`flex flex-col items-center p-2 rounded-lg transition ${currentPage === 'virtuallab' ? 'theme-primary text-white' : 'text-gray-600 hover:text-gray-800'
+              className={`flex flex-col items-center px-2 py-2 rounded-lg transition flex-shrink-0 min-w-[60px] ${currentPage === 'virtuallab' ? 'theme-primary text-white' : 'text-gray-600 hover:text-gray-800'
                 }`}
             >
-              <span className="text-xl mb-1">🧪</span>
-              <span className="text-xs font-medium">{t('labs')}</span>
+              <span className="text-lg md:text-xl mb-1">🧪</span>
+              <span className="text-[10px] md:text-xs font-medium whitespace-nowrap">{t('labs')}</span>
             </button>
 
             <button
               onClick={() => navigate('leaderboard')}
-              className={`flex flex-col items-center p-2 rounded-lg transition ${currentPage === 'leaderboard' ? 'theme-primary text-white' : 'text-gray-600 hover:text-gray-800'
+              className={`flex flex-col items-center px-2 py-2 rounded-lg transition flex-shrink-0 min-w-[60px] ${currentPage === 'leaderboard' ? 'theme-primary text-white' : 'text-gray-600 hover:text-gray-800'
                 }`}
             >
-              <span className="text-xl mb-1">🏆</span>
-              <span className="text-xs font-medium">{t('ranks')}</span>
+              <span className="text-lg md:text-xl mb-1">🏆</span>
+              <span className="text-[10px] md:text-xs font-medium whitespace-nowrap">{t('ranks')}</span>
             </button>
 
             <button
               onClick={() => navigate('classroom')}
-              className={`flex flex-col items-center p-2 rounded-lg transition ${currentPage === 'classroom' ? 'theme-primary text-white' : 'text-gray-600 hover:text-gray-800'
+              className={`flex flex-col items-center px-2 py-2 rounded-lg transition flex-shrink-0 min-w-[60px] ${currentPage === 'classroom' ? 'theme-primary text-white' : 'text-gray-600 hover:text-gray-800'
                 }`}
             >
-              <span className="text-xl mb-1">🏫</span>
-              <span className="text-xs font-medium">{t('class')}</span>
+              <span className="text-lg md:text-xl mb-1">🏫</span>
+              <span className="text-[10px] md:text-xs font-medium whitespace-nowrap">{t('class')}</span>
             </button>
 
             <button
               onClick={() => navigate('events')}
-              className={`flex flex-col items-center p-2 rounded-lg transition ${currentPage === 'events' ? 'theme-primary text-white' : 'text-gray-600 hover:text-gray-800'
+              className={`flex flex-col items-center px-2 py-2 rounded-lg transition flex-shrink-0 min-w-[60px] ${currentPage === 'events' ? 'theme-primary text-white' : 'text-gray-600 hover:text-gray-800'
                 }`}
             >
-              <span className="text-xl mb-1">📅</span>
-              <span className="text-xs font-medium">{t('events')}</span>
+              <span className="text-lg md:text-xl mb-1">📅</span>
+              <span className="text-[10px] md:text-xs font-medium whitespace-nowrap">{t('events')}</span>
             </button>
 
             <button
               onClick={() => navigate('teacher')}
-              className={`flex flex-col items-center p-2 rounded-lg transition ${currentPage === 'teacher' ? 'theme-primary text-white' : 'text-gray-600 hover:text-gray-800'
+              className={`flex flex-col items-center px-2 py-2 rounded-lg transition flex-shrink-0 min-w-[60px] ${currentPage === 'teacher' ? 'theme-primary text-white' : 'text-gray-600 hover:text-gray-800'
                 }`}
             >
-              <span className="text-xl mb-1">👨‍🏫</span>
-              <span className="text-xs font-medium">Teacher</span>
+              <span className="text-lg md:text-xl mb-1">👨‍🏫</span>
+              <span className="text-[10px] md:text-xs font-medium whitespace-nowrap">Teacher</span>
             </button>
 
             <button
               onClick={() => navigate('parents')}
-              className={`flex flex-col items-center p-2 rounded-lg transition ${currentPage === 'parents' ? 'theme-primary text-white' : 'text-gray-600 hover:text-gray-800'
+              className={`flex flex-col items-center px-2 py-2 rounded-lg transition flex-shrink-0 min-w-[60px] ${currentPage === 'parents' ? 'theme-primary text-white' : 'text-gray-600 hover:text-gray-800'
                 }`}
             >
-              <span className="text-xl mb-1">👨‍👩‍👧‍👦</span>
-              <span className="text-xs font-medium">Parents</span>
+              <span className="text-lg md:text-xl mb-1">👨‍👩‍👧‍👦</span>
+              <span className="text-[10px] md:text-xs font-medium whitespace-nowrap">Parents</span>
             </button>
           </div>
         </div>
       </nav>
-
-      {/* Bottom padding to account for fixed navigation */}
-      <div className="h-20"></div>
     </div>
   );
 };

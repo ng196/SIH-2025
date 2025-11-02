@@ -146,17 +146,17 @@ const TeacherDashboard = () => {
             />
 
             {/* Main Content */}
-            <div className={`flex-1 transition-all duration-300 ${sidebarCollapsed ? 'ml-20' : 'ml-72'} md:ml-0`}>
+            <div className={`flex-1 transition-all duration-300 ${sidebarCollapsed ? 'md:ml-20' : 'md:ml-72'} ml-0`}>
                 {/* Header */}
-                <div className="bg-white shadow-sm border-b border-gray-200 px-6 py-4 md:pl-6 pl-16">
-                    <div className="flex justify-between items-center">
+                <div className="bg-white shadow-sm border-b border-gray-200 px-4 md:px-6 py-4 md:pl-6 pl-16">
+                    <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-3 sm:gap-0">
                         <div>
-                            <h1 className="text-2xl font-bold text-gray-900">{t('teacher.headerTitle')}</h1>
-                            <p className="text-gray-600 mt-1">Dr. Smith</p>
+                            <h1 className="text-xl md:text-2xl font-bold text-gray-900">{t('teacher.headerTitle')}</h1>
+                            <p className="text-gray-600 mt-1 text-sm md:text-base">Dr. Smith</p>
                         </div>
                         <div className="flex items-center space-x-4">
                             <div className="flex items-center space-x-2">
-                                <span className="text-gray-700">John Smith</span>
+                                <span className="text-gray-700 text-sm md:text-base hidden sm:inline">John Smith</span>
                                 <div className="w-8 h-8 rounded-full flex items-center justify-center text-white" style={{backgroundColor: '#0055A4'}}>
                                     👨‍🏫
                                 </div>
@@ -166,12 +166,12 @@ const TeacherDashboard = () => {
                 </div>
 
                 {/* Content Area */}
-                <div className="p-6">
+                <div className="p-4 md:p-6">
                     {/* Overview Tab */}
                     {activeTab === 'overview' && (
-                        <div className="space-y-6">
+                        <div className="space-y-4 md:space-y-6">
                             {/* Stats Cards */}
-                            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6">
                                 <div className="bg-white shadow-sm p-6 border border-gray-200" style={{borderRadius: '8px'}}>
                                     <div className="flex items-center">
                                         <div className="w-12 h-12 flex items-center justify-center text-white text-xl" style={{backgroundColor: '#0055A4', borderRadius: '8px'}}>
@@ -226,16 +226,16 @@ const TeacherDashboard = () => {
                             </div>
 
                             {/* Chart Section */}
-                            <div className="bg-white shadow-sm p-6 border border-gray-200" style={{borderRadius: '8px'}}>
-                                <div className="flex justify-between items-center mb-6">
-                                    <h2 className="text-xl font-bold" style={{color: '#333333'}}>{t('teacher.classPerformance')}</h2>
-                                    <select className="px-3 py-2 border border-gray-300 text-sm" style={{borderRadius: '8px'}}>
+                            <div className="bg-white shadow-sm p-4 md:p-6 border border-gray-200" style={{borderRadius: '8px'}}>
+                                <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-3 mb-4 md:mb-6">
+                                    <h2 className="text-lg md:text-xl font-bold" style={{color: '#333333'}}>{t('teacher.classPerformance')}</h2>
+                                    <select className="px-3 py-2 border border-gray-300 text-sm w-full sm:w-auto" style={{borderRadius: '8px'}}>
                                         <option>Last 7 days</option>
                                         <option>Last 30 days</option>
                                         <option>Last 90 days</option>
                                     </select>
                                 </div>
-                                <div className="grid grid-cols-1 md:grid-cols-4 gap-4 mb-6">
+                                <div className="grid grid-cols-2 md:grid-cols-4 gap-3 md:gap-4 mb-4 md:mb-6">
                                     <div className="text-center p-4" style={{backgroundColor: '#E3F2FD', borderRadius: '8px'}}>
                                         <div className="text-2xl font-bold" style={{color: '#0055A4'}}>{classAnalytics.averageScore}%</div>
                                         <div className="text-sm" style={{color: '#757575'}}>{t('teacher.classAverage')}</div>

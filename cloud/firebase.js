@@ -5,16 +5,22 @@ import { getAuth } from "firebase/auth";
 // https://firebase.google.com/docs/web/setup#available-libraries
 
 // Your web app's Firebase configuration
-// For Firebase JS SDK v7.20.0 and later, measurementId is optional
+// IMPORTANT: Firebase config should use environment variables
+// Create a .env file with your Firebase configuration
 const firebaseConfig = {
-  apiKey: "AIzaSyCZ_Xq3LaHbCbf3vZ6H0SrqkAGhP-puRgs",
-  authDomain: "webapp-b6b11.firebaseapp.com",
-  projectId: "webapp-b6b11",
-  storageBucket: "webapp-b6b11.firebasestorage.app",
-  messagingSenderId: "897201812984",
-  appId: "1:897201812984:web:89d4aebf768ec69fa4d20d",
-  measurementId: "G-QYH529GS3J"
+  apiKey: import.meta.env?.VITE_FIREBASE_API_KEY || process.env.VITE_FIREBASE_API_KEY || "REPLACE_WITH_YOUR_API_KEY",
+  authDomain: import.meta.env?.VITE_FIREBASE_AUTH_DOMAIN || process.env.VITE_FIREBASE_AUTH_DOMAIN || "your-project.firebaseapp.com",
+  projectId: import.meta.env?.VITE_FIREBASE_PROJECT_ID || process.env.VITE_FIREBASE_PROJECT_ID || "your-project-id",
+  storageBucket: import.meta.env?.VITE_FIREBASE_STORAGE_BUCKET || process.env.VITE_FIREBASE_STORAGE_BUCKET || "your-project.firebasestorage.app",
+  messagingSenderId: import.meta.env?.VITE_FIREBASE_MESSAGING_SENDER_ID || process.env.VITE_FIREBASE_MESSAGING_SENDER_ID || "123456789",
+  appId: import.meta.env?.VITE_FIREBASE_APP_ID || process.env.VITE_FIREBASE_APP_ID || "1:123456789:web:abcdef123456",
+  measurementId: import.meta.env?.VITE_FIREBASE_MEASUREMENT_ID || process.env.VITE_FIREBASE_MEASUREMENT_ID || "G-XXXXXXXXX"
 };
+
+// Warn if using default values
+if (firebaseConfig.apiKey === "REPLACE_WITH_YOUR_API_KEY") {
+  console.warn('⚠️ Firebase not configured. Please set Firebase environment variables in your .env file');
+}
 
 const app = initializeApp(firebaseConfig);
 export const auth = getAuth(app);
