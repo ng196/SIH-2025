@@ -47,10 +47,8 @@ const TeacherSidebar = ({ activeTab, onTabChange, isCollapsed, onToggle }) => {
 
     const handleNavItemClick = (itemId) => {
         onTabChange(itemId);
-        // Close mobile menu after selection
-        if (window.innerWidth <= 768) {
-            setIsMobileMenuOpen(false);
-        }
+        // Close mobile menu after selection on mobile screens
+        setIsMobileMenuOpen(false);
     };
 
     const { currentLanguage, changeLanguage, availableLanguages } = useLanguage();
@@ -116,7 +114,7 @@ const TeacherSidebar = ({ activeTab, onTabChange, isCollapsed, onToggle }) => {
                                             <button
                                                 key={child.id}
                                                 className={`nav-item child-item ${activeTab === child.id ? 'active' : ''}`}
-                                                onClick={() => onTabChange(child.id)}
+                                                onClick={() => handleNavItemClick(child.id)}
                                             >
                                                 <span className="nav-icon">{child.icon}</span>
                                                 <span className="nav-text">{child.name}</span>
