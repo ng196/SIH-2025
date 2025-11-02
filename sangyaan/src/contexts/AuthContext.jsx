@@ -9,10 +9,20 @@ const AuthContext = createContext({
 });
 
 export const AuthProvider = ({ children }) => {
-  const [user, setUser] = useState(null);
-  const [isAuthenticated, setIsAuthenticated] = useState(false);
+  // Default guest user with full permissions
+  const defaultGuestUser = {
+    method: 'guest',
+    user: {
+      name: 'Guest',
+      type: 'guest',
+      avatar: '👤'
+    }
+  };
 
-  // Load user from localStorage on mount
+  const [user, setUser] = useState(defaultGuestUser);
+  const [isAuthenticated, setIsAuthenticated] = useState(true);
+
+  // Load user from localStorage on mount, or use guest mode
   useEffect(() => {
     const storedUser = localStorage.getItem('stemquest_user');
     if (storedUser) {
@@ -22,8 +32,10 @@ export const AuthProvider = ({ children }) => {
         setIsAuthenticated(true);
       } catch {
         localStorage.removeItem('stemquest_user');
+        // Keep default guest user
       }
     }
+    // If no stored user, keep default guest mode (already set above)
   }, []);
 
   const signIn = async (userData) => {

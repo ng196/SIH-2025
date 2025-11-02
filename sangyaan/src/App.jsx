@@ -1,6 +1,6 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { LanguageProvider, useLanguage } from './contexts/LanguageContext';
-import { AuthProvider, useAuth } from './contexts/AuthContext';
+import { AuthProvider } from './contexts/AuthContext';
 import Homepage from './components/Homepage';
 import Classroom from './components/Classroom';
 import Learn from './components/Learn';
@@ -10,36 +10,14 @@ import Events from './components/Events';
 import TeacherDashboard from './components/TeacherDaashboard';
 import ParentsDashboard from './components/ParentsDashboard';
 import Arena from './components/Arena';
-import Login from './components/Login';
 
 const AppContent = () => {
   const [currentPage, setCurrentPage] = useState('homepage');
   const { t } = useLanguage();
-  const { isAuthenticated, signIn } = useAuth();
-  const [showLogin, setShowLogin] = useState(false);
-
-  // Update showLogin when authentication state changes
-  useEffect(() => {
-    setShowLogin(!isAuthenticated);
-  }, [isAuthenticated]);
 
   const navigate = (page) => {
     setCurrentPage(page);
   };
-
-  const handleLoginSuccess = (loginData) => {
-    signIn(loginData);
-    setShowLogin(false);
-  };
-
-  const handleSkipLogin = () => {
-    setShowLogin(false);
-  };
-
-  // Show login screen if not authenticated and not skipped
-  if (showLogin) {
-    return <Login onLoginSuccess={handleLoginSuccess} onSkipLogin={handleSkipLogin} />;
-  }
 
   const renderPage = () => {
     switch (currentPage) {
