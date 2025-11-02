@@ -151,6 +151,36 @@ const Homepage = ({ onNavigate }) => {
                                 </div>
                             </div>
 
+                            {/* Promotional Card for Saksham */}
+                            <div className="mb-12 max-w-xl mx-auto">
+                                <a
+                                    href="https://campus.nitingoyal.tech"
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    className="block theme-card rounded-2xl p-6 shadow-lg hover:shadow-2xl transition-all transform hover:scale-105 border-2 border-blue-500/30 hover:border-blue-500/60"
+                                >
+                                    <div className="flex items-center space-x-4">
+                                        <div className="flex-shrink-0">
+                                            <div className="w-16 h-16 rounded-full bg-gradient-to-br from-blue-500 to-purple-600 flex items-center justify-center shadow-lg">
+                                                <span className="text-3xl">🎓</span>
+                                            </div>
+                                        </div>
+                                        <div className="flex-1">
+                                            <h3 className="text-lg font-bold theme-text mb-1">
+                                                Are you a college student?
+                                            </h3>
+                                            <p className="text-sm opacity-70 mb-2">
+                                                Check out Saksham - Your campus companion app
+                                            </p>
+                                            <div className="flex items-center space-x-2 text-sm">
+                                                <span className="text-blue-500 font-semibold">Visit Now</span>
+                                                <span className="text-blue-500">→</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </a>
+                            </div>
+
                             {/* Quick Stats */}
                             <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
                                 <button
